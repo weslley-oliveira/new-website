@@ -1,0 +1,42 @@
+.content{
+    height: 4rem;
+}
+
+.container{
+    max-width: 1028px;
+    margin: 0 auto;
+    height: 4rem;
+    
+    display: flex;
+    align-items: center;
+
+    img{
+        width: 76px;
+        height: 46px;
+    }
+
+    h2{ 
+        padding-left: 0.5rem;
+    }
+    
+    nav{
+        margin-left: 4rem;
+
+        a{
+            
+            & + a { 
+                margin-left: 2rem;
+            }
+        }
+
+        
+        .active{
+            color: var(--contrast);
+            font-weight: bold;
+        }
+    }
+
+    button{
+        margin-left: auto;
+    }
+}
