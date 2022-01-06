@@ -22,3 +22,9 @@ a {
   --contrast: #8257E6;
 
 }
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+}

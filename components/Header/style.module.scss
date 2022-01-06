@@ -8,35 +8,40 @@
     height: 4rem;
     
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    
+    .logo {
+        font-size: 24px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+      }
 
-    img{
-        width: 76px;
-        height: 46px;
+    .lineTitle{
+        height: 0.25rem;  
+        width: 12rem;       
+        background-color: var(--contrast);
+        border-radius: 100%;
     }
 
     h2{ 
-        padding-left: 0.5rem;
+        text-align: center;       
     }
+      
     
-    nav{
-        margin-left: 4rem;
-
-        a{
-            
-            & + a { 
-                margin-left: 2rem;
-            }
-        }
-
-        
-        .active{
-            color: var(--contrast);
-            font-weight: bold;
+    
+    @media (max-width: 600px) {
+        .device {
+            display: flex;
+            flex-direction: column;           
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-left: 0rem;
+            background-color: white;
         }
     }
 
-    button{
-        margin-left: auto;
-    }
 }
