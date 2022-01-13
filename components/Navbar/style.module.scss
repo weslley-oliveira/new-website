@@ -9,7 +9,7 @@
 
 .mobileMenu{
     cursor: pointer;
-
+    display: none;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -29,15 +29,16 @@
       position: absolute;
       top: 8vh;
       right: 0;
-      width: 50vw;
+      width: 90vw;
       height: 92vh;
-      background: red;
+      background: var(--contrast);
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
       transform: translateX(100%);
       transition: transform 0.3s ease-in;
       color: white;
+      font-weight: bold;
     }
     .listMenu li {
       margin-left: 0;
