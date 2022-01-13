@@ -24,7 +24,7 @@ a {
 }
 
 @media (max-width: 600px) {
-  body {
+  html, body {
     overflow-x: hidden;
   }
 }
