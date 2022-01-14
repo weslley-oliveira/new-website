@@ -36,11 +36,14 @@
       background: var(--contrast);
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-evenly;
+      padding: 0;
       transform: translateX(100%);
       transition: transform 0.3s ease-in;
       color: white;
       font-weight: bold;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
     }
     .listMenu li {
       margin-left: 0;
