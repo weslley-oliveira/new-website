@@ -13,6 +13,7 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+    z-index: 1;
 
     div {
         width: 32px;
@@ -27,10 +28,11 @@
     
     .listMenu {
       position: absolute;
-      top: 8vh;
+      top: 0;
       right: 0;
-      width: 90vw;
-      height: 92vh;
+      width: 100vw;
+      height: 100vh;
+      margin-top: 0;
       background: var(--contrast);
       flex-direction: column;
       align-items: center;
