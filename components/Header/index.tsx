@@ -2,15 +2,13 @@ import { Navbar } from '../Navbar'
 import style from './style.module.scss'
 
 export function Header() {
+    const Title = "Dev Oliveira"
     return (
-        <header className={style.content}>
-            <div className={style.container}> 
-                                    
-                <h2 className={style.logo}>Dev Oliveira <div className={style.lineTitle}></div></h2> 
-
-                <Navbar/>              
-               
+        <header className={style.container}>
+            <div className={style.logo}>                                    
+                <h2> {"<"}{Title}<span>{"/>"}</span> </h2> 
             </div>
+            <Navbar/>
         </header>
     )
 }

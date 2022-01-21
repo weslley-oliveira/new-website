@@ -1,38 +1,34 @@
-.content{
-    height: 4rem;
-}
-
-.container{
+.container {
     max-width: 1028px;
     margin: 0 auto;
-    height: 4rem;
+    height: 4rem; 
     
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     
+        
     .logo {
-        font-size: 24px;
+        font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 4px;
+
+        h2{         
+            font-family: 'Architects Daughter', cursive;    
+            span{
+                color: var(--contrast)
+            }  
+        }
+
+        h2::first-letter{
+            color: var(--contrast)
+        }      
       }
-
-    .lineTitle{
-        height: 0.25rem;  
-        width: 12rem;       
-        background-color: var(--contrast);
-        border-radius: 100%;
-    }
-
-    h2{ 
-        text-align: center;
-        font-family: 'Architects Daughter', cursive;       
-    }    
 
 }
 
-@media (max-width: 600px) {
-    .container{        
-        justify-content: space-evenly !important;
-    }
+@media (max-width: 640px) {
+    .container{
+        justify-content: center;
+    }    
 }
