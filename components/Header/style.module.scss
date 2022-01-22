@@ -6,12 +6,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-        
+            
     .logo {
         font-size: 1rem;
         text-transform: uppercase;
-        letter-spacing: 4px;
+        letter-spacing: 4px;        
 
         h2{         
             font-family: 'Architects Daughter', cursive;    
@@ -28,6 +27,9 @@
 }
 
 @media (max-width: 640px) {
+    .logo{
+        padding-top: 1rem;
+    }
     .container{
         justify-content: center;
     }    

@@ -1,5 +1,10 @@
 import { useState } from 'react'
 import style from './style.module.scss'
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { BiHomeAlt } from 'react-icons/bi';
+import { FaLaptopCode } from 'react-icons/fa';
+import { GiTechnoHeart } from 'react-icons/gi';
+
 
 export function Navbar() {
 
@@ -17,10 +22,10 @@ export function Navbar() {
             </div>          
             
             <ul className={`${style.listMenu}  ${isToggled?style.active:''}`}>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Who Am I</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Tecnologies</a></li>
+                <li><a href="#"><span><BiHomeAlt/></span>Home</a></li>
+                <li><a href="#"><span><BsFillPersonLinesFill/></span> Who Am I </a></li>
+                <li><a href="#"><span><FaLaptopCode/></span>Projects</a></li>
+                <li><a href="#"><span><GiTechnoHeart/></span>Tecnologies</a></li>
             </ul>            
         </nav>
     )

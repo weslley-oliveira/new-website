@@ -1,9 +1,21 @@
 .listMenu{
     list-style-type: none;
     display: flex;
+    font-size: 1.25rem;
+    justify-content: space-between;
+    gap: 1rem;
     
     li{
         padding-left: 1rem;
+
+        span{
+          display: none;
+        }
+    }
+
+    li:hover{
+      color: var(--contrast);
+      transition: 0.3s;
     }
 }
 
@@ -41,14 +53,35 @@
       transform: translateX(100%);
       transition: transform 0.3s ease-in;
       color: white;
-      font-weight: bold;
+      font-weight: normal;
       border-top-left-radius: 15px;
       border-bottom-left-radius: 15px;
     }
     .listMenu li {
       margin-left: 0;
       opacity: 1;
+      
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        span {    
+          display: block;  
+          font-size: 2rem;
+          margin-top: 0.50rem;
+          padding-right: 1.5rem;
+          color: var(--highlight)
+          
+        }
+      }
+      :hover{
+        color: var(--highlight);
+        transition: 0.3s;
+      }
+      
     }
+    
     .mobileMenu {
       display: block;
     }
