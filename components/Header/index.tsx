@@ -1,11 +1,11 @@
 import { Navbar } from '../Navbar'
-import style from './style.module.scss'
+import styles from './style.module.scss'
 
 export function Header() {
     const Title = "Dev Oliveira"
     return (
-        <header className={style.container}>
-            <div className={style.logo}>                                    
+        <header className={styles.container}>
+            <div className={styles.logo}>                                    
                 <h2> {"<"}{Title}<span>{"/>"}</span> </h2> 
             </div>
             <Navbar/>

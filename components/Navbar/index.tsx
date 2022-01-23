@@ -5,6 +5,7 @@ import { BiHomeAlt } from 'react-icons/bi';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiTechnoHeart } from 'react-icons/gi';
 
+import { Link } from 'react-scroll'
 
 export function Navbar() {
 
@@ -22,10 +23,27 @@ export function Navbar() {
             </div>          
             
             <ul className={`${style.listMenu}  ${isToggled?style.active:''}`}>
-                <li><a href="#"><span><BiHomeAlt/></span>Home</a></li>
-                <li><a href="#"><span><BsFillPersonLinesFill/></span> Who Am I </a></li>
-                <li><a href="#"><span><FaLaptopCode/></span>Projects</a></li>
-                <li><a href="#"><span><GiTechnoHeart/></span>Tecnologies</a></li>
+                <li>
+                    <Link activeClass="active" to="home" spy={true} smooth={true} offset={50} duration={500} >
+                    <a href="#" onClick={()=>setIsToggled(!isToggled)}><span><BiHomeAlt/></span>Home</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link activeClass="active" to="home" spy={true} smooth={true} offset={50} duration={500} >
+                        <a href="#" onClick={()=>setIsToggled(!isToggled)}><span><BsFillPersonLinesFill/></span> Who Am I </a>
+                    </Link>
+                </li> 
+                <li>
+                    <Link activeClass="active" to="projects" spy={true} smooth={true} offset={50} duration={500} >
+                        <a href="#" onClick={()=>setIsToggled(!isToggled)}><span><FaLaptopCode/></span>Projects</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link activeClass="active" to="technologies" spy={true} smooth={true} offset={50} duration={500}  >
+                        <a href="#" onClick={()=>setIsToggled(!isToggled)}><span><GiTechnoHeart/></span>Tecnologies</a>
+                    </Link>
+                </li>
+                
             </ul>            
         </nav>
     )

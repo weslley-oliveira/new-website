@@ -22,16 +22,16 @@
 .mobileMenu{
     cursor: pointer;
     display: none;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    position: fixed;
+    top: 1.25rem;
+    right: 0.75rem;
     z-index: 1;
 
     div {
-        width: 32px;
-        height: 2px;
+        width: 27.2px;
+        height: 1.7px;
         background: #fff;
-        margin: 8px;
+        margin: 6.8px;
         transition: 0.3s;
     }
 }
@@ -39,7 +39,7 @@
 @media (max-width: 640px) {
     
     .listMenu {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       width: 80vw;
@@ -104,7 +104,7 @@
  
   .active{ 
     .line1 {
-      transform: rotate(-45deg) translate(-8px, 8px);
+      transform: rotate(-45deg) translate(-6.8px, 6.8px);
     }
     
     .line2 {
@@ -112,6 +112,6 @@
     }
     
     .line3 {
-      transform: rotate(45deg) translate(-5px, -7px);
+      transform: rotate(45deg) translate(-4.25px, -5.95px);
     }
 }
