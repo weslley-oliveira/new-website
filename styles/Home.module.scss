@@ -12,11 +12,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.main {
-  
+.main {  
   height: 100%;
   padding-right: 3rem;
 
@@ -69,7 +67,17 @@
 }
 
 @media (max-width: 600px) {
-  
+  .container{
+    display: flex;
+    flex-direction: column;
+    
+    gap: 2rem;
+    padding: 2rem 2rem;
+  }
+
+  .main{
+    align-items: center;   
+  }
   .shapeDivider{
     svg{
       height: 4rem;
