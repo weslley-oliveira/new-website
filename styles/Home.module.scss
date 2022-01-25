@@ -1,5 +1,27 @@
+.shapeDivider {
+  
+  background-color: var(--bg);
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(158% + 1.3px);
+    height: 150px;
+  }
+  .shapeFill {
+    fill: var(--contrast);
+  }
+  
+}
+
 .container {
   padding: 0 2rem;
+  background: rgb(43,45,47);
+  background: radial-gradient(circle, rgba(43,45,47,1) 0%, rgba(18,18,20,1) 43%);
 }
 
 .main {
@@ -112,5 +134,10 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .shapeDivider{
+    svg{
+      height: 4rem;
+    }
   }
 }
