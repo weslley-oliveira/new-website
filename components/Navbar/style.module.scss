@@ -1,5 +1,4 @@
 .listMenu{
-
     ul{
       list-style-type: none;
       display: flex;
@@ -28,7 +27,7 @@
     position: fixed;
     top: 1.25rem;
     right: 0.75rem;
-    z-index: 1;
+    z-index: 2;
 
     div {
         width: 27.2px;
@@ -59,6 +58,8 @@
     
     transform: translateX(100%);
     transition: transform 0.3s ease-in;
+
+    z-index: 1;
     
     ul{
       width: 100%;

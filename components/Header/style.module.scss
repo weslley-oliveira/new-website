@@ -1,12 +1,13 @@
 .header{
     background-color: var(--bg);
+    height: 80px;
+    margin-bottom: -25px;
 }
 
 .container {
     max-width: 1028px;
     margin: 0 auto;
-    height: 4rem; 
-    
+        
     display: flex;
     align-items: center;
     justify-content: space-between;
