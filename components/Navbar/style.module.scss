@@ -39,10 +39,6 @@
     }
 }
 
-.animation{ 
-  display: none;
-}
-
 @media (max-width: 640px) {
   
   .listMenu {
@@ -51,24 +47,18 @@
     right: 0;
     width: 69vw;
     height: 100vh;
-    margin-top: 0;
-    background: var(--contrast);
+    margin-top: 0;    
     color: white;
     
     font-weight: normal;
-    border-top-left-radius: 15px;
+    
+    border-radius: 15px;
+    background: #8257E6;
+    box-shadow: inset 20px 20px 60px #6f4ac4,
+                inset -20px -20px 60px #9664ff;
     
     transform: translateX(100%);
     transition: transform 0.3s ease-in;
-
-    .animation{
-     display: inline-block;
-     position: absolute;
-     bottom: 0;
-     right: 0;
-     left: 0;
-     border-bottom-left-radius: 15px; 
-    }
     
     ul{
       width: 100%;
@@ -77,16 +67,17 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-evenly;
-      padding-bottom: 300px;
-
-      li {
+      
+      li {        
         margin-left: 0;
         opacity: 1;
+        
         
         a {
           display: inline-flex;
           align-items: center;
           justify-content: space-between;
+          text-shadow: 2px 2px rgba(0, 0, 0, 0.438);
     
           span {    
             display: block;  

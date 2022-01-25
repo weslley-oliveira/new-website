@@ -60,16 +60,7 @@ export function Navbar() {
                             <a href="#" onClick={()=>setIsToggled(!isToggled)}><span><GiTechnoHeart/></span>Tecnologies</a>
                         </Link>
                     </li>
-                </ul>
-                <div className={style.animation}>
-                    <Lottie 
-                        options={defaultOptions}
-                        height={400}
-                        width={400}
-                        isStopped={animationState.isStopped}
-                        isPaused={animationState.isPaused}
-                    />
-                </div>
+                </ul>                
             </div>
                         
         </nav>
