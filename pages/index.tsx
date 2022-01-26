@@ -21,7 +21,7 @@ const Home: NextPage = () => {
           Weslley Oliveira
         </h1>
         <p>
-          Hello there text of the printing and typesetting industry.
+          Hello there how are you? of the printing and typesetting industry.
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
         </p>
         <button>Download CV</button>        
