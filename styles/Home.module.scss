@@ -24,13 +24,20 @@
   justify-content: center;
   
   h1 {
-    font-size: 3rem;
+    font-size: 44px;
   }
 
   button{
     padding: 1rem;
+    background: var(--highlight);
+    border-radius: 2px;
+    border: none;
 
     width: 10rem;
+  }
+
+  p{
+    opacity: 0.75;
   }
 }
 
@@ -74,7 +81,8 @@
 
   .main{
     padding: 3rem 0rem;
-    display: block; 
+    display: block;
+    h1{ font-size: 32px;} 
   }
 
   .shapeDivider{

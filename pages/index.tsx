@@ -22,8 +22,8 @@ const Home: NextPage = () => {
           Weslley Oliveira
         </h1>
         <p>
-          Hello there how are you? of the printing and typesetting industry.
-          Algum texto vai estar aqui.
+        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 
+        Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
         </p>
         <button>Download CV</button>        
       </main>
