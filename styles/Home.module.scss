@@ -6,17 +6,14 @@
 .container{
   max-width: 1028px;
   margin: 0 auto; 
-  
-  height: 80vh; 
-
+ 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .main {  
-  height: 100%;
-
+ 
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -25,6 +22,7 @@
   
   h1 {
     font-size: 44px;
+    
   }
 
   button{
@@ -33,7 +31,10 @@
     border-radius: 2px;
     border: none;
 
-    width: 10rem;
+    color: white;
+
+    font-size: 20px;
+
   }
 
   p{
@@ -42,10 +43,13 @@
 }
 
 .section{
-  div {
-    width: 400px;
-    height: 400px;
-    background-color: var(--contrast);
+  img {
+    
+    width: 174.38px;
+    height: 180px;
+
+    border-radius: 100%;
+
   }
 }
 
@@ -80,9 +84,16 @@
   }
 
   .main{
+    
     padding: 3rem 0rem;
-    display: block;
-    h1{ font-size: 32px;} 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+    h1{ 
+      font-size: 32px;
+      width: 70vw;
+    } 
   }
 
   .shapeDivider{

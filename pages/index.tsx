@@ -4,10 +4,12 @@ import styles from '../styles/Home.module.scss'
 import Projects from './projects'
 import { Footer } from '../components/Footer'
 import Technologies from './technologies'
+import { Header } from '../components/Header'
 
 
 const Home: NextPage = () => {
   return (<div className={styles.home}>
+    <Header/>
     <div className={styles.container} id="home">
       <Head>
         <title>Dev Oliveira</title>
@@ -19,16 +21,16 @@ const Home: NextPage = () => {
     
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Weslley Oliveira
+          Hi, I am Weslley a problem solver.
         </h1>
         <p>
         Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 
         Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
         </p>
-        <button>Download CV</button>        
+        <button>Download Curriculum</button>        
       </main>
       <section className={styles.section}>
-        <div></div>
+        <img src="/profile.jpg" alt="Weslley Oliveira"/>
       </section>             
     </div>
     <div className={styles.shapeDivider}>
