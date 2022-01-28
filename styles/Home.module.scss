@@ -11,6 +11,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  a{
+    z-index: 3;
+  }
   
 }
 
@@ -89,7 +93,9 @@
 
 @media (max-width: 600px) {
   .animation{
-    margin-bottom: -1.5rem;
+    margin-bottom: -2.5rem;
+    padding-top: 2rem;
+    z-index: 3;
     }
 
   .container{
