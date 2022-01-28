@@ -25,10 +25,9 @@ const Home: NextPage = () => {
           Hi, I am Weslley a problem solver.
         </h1>
         <p>
-        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 
-        Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          Front-end Web Developer, technology and programming.
         </p>
-        <button>Download Curriculum</button>        
+        <button>Download CV</button>        
       </main>
       <section className={styles.section}>
         <img src="/profile.jpg" alt="Weslley Oliveira"/>

@@ -32,16 +32,18 @@
   button{
     padding: 1rem;
     background: var(--highlight);
-    border-radius: 2px;
+    border-radius: 1px;
     border: none;
 
     color: white;
 
-    font-size: 20px;
+    font-size: 1.25rem;
+    margin: 0 2rem;
 
   }
 
   p{
+    padding-bottom: 1.5rem;
     text-align: center;
     opacity: 0.75;
   }
