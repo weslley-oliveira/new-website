@@ -62,12 +62,12 @@ const Home: NextPage = () => {
       </section>             
     </div>
 
-    {scrollPosition <= 50 &&
+    {scrollPosition <= 100 &&
     <Link activeClass="active" to="about" spy={true} smooth={true} offset={0} duration={1000} >
       <div className={styles.animation}>
         <Lottie 
             options={defaultOptions}
-            height={40}
+            height={60}
             width={60}
           />
       </div>
