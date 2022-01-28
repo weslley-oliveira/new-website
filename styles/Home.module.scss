@@ -1,11 +1,16 @@
 .home {    
   background: rgb(43,45,47);
   background: radial-gradient(circle, rgb(28, 29, 31) 0%, rgba(18,18,20,1) 38%);
+
+  max-width: 1028px;
+  margin: 0 auto; 
+
+  padding: 3.5rem 2rem 0;
+  
 }
 
 .container{
-  max-width: 1028px;
-  margin: 0 auto; 
+ 
  
   display: flex;
   justify-content: center;

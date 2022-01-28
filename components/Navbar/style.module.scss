@@ -1,4 +1,5 @@
 .listMenu{
+
     ul{
       list-style-type: none;
       display: flex;
@@ -21,32 +22,18 @@
     }
 }
 
-.mobileMenu{
-    cursor: pointer;
-    display: none;
-    position: fixed;
-    top: 1.25rem;
-    right: 0.75rem;
-    z-index: 2;
-
-    div {
-        width: 27.2px;
-        height: 1.7px;
-        background: #fff;
-        margin: 6.8px;
-        transition: 0.3s;
-    }
-}
 
 @media (max-width: 640px) {
   
-  .listMenu {
-    position: fixed;
+  .listMenu {   
+    
+    position: absolute;
     top: 0;
     right: 0;
-    width: 69vw;
+    width: 80vw;
     height: 100vh;
-    margin-top: 0;    
+    
+       
     color: white;
     
     font-weight: normal;
@@ -54,8 +41,7 @@
     background: #8257E6;
     box-shadow: inset 20px 20px 60px #6f4ac4,
                 inset -20px -20px 60px #9664ff;
-    
-    transform: translateX(100%);
+    transform: translate(100%,0px);   
     transition: transform 0.3s ease-in;
 
     z-index: 1;
@@ -98,13 +84,11 @@
     
   }
     
-    .mobileMenu {
-      display: block;
-    }
+    
   }
   
   .active {
-    transform: translateX(0);
+    transform: translate(0px,0px);
   }
   
   @keyframes navLinkFade {
@@ -117,17 +101,3 @@
       transform: translateX(0);
     }
   }
- 
-  .active{ 
-    .line1 {
-      transform: rotate(-45deg) translate(-6.8px, 6.8px);
-    }
-    
-    .line2 {
-      opacity: 0;
-    }
-    
-    .line3 {
-      transform: rotate(45deg) translate(-4.25px, -5.95px);
-    }
-}
