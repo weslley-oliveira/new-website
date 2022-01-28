@@ -4,10 +4,11 @@ import styles from './style.module.scss'
 
 import { animateScroll } from 'react-scroll'
 
+
 export function Header() {
     const Title = "Oliveira"
 
-    const [isToggled, setIsToggled] = useState(false)
+    const [isToggled, setIsToggled] = useState<boolean>(false)
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
@@ -22,6 +23,7 @@ export function Header() {
         };
     }, []);
 
+    console.log("teste",isToggled)
     return (<>
         <header className={styles.header}>
             <div className={styles.title}>
@@ -36,6 +38,6 @@ export function Header() {
                 <div className={styles.line3}></div>
             </div>           
         </header>
-        <Navbar button={isToggled}/>
+        <Navbar button={isToggled} setIsToggled={setIsToggled}/>
     </>)
 }
