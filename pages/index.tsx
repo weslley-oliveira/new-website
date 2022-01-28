@@ -9,8 +9,25 @@ import About from './about'
 import Lottie from 'react-lottie'
 
 import animationData from '../lotties/downAnimation.json'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-scroll'
 
 const Home: NextPage = () => {
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+  // Lottie
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -19,6 +36,7 @@ const Home: NextPage = () => {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+
   return (<><div className={styles.home}>
     <Header/>
     <div className={styles.container} id="home">
@@ -44,13 +62,18 @@ const Home: NextPage = () => {
       </section>             
     </div>
 
-    <div className={styles.animation}>
-    <Lottie 
-	      options={defaultOptions}
-        height={40}
-        width={40}
-      />
+    {scrollPosition <= 50 &&
+    <Link activeClass="active" to="about" spy={true} smooth={true} offset={0} duration={1000} >
+      <div className={styles.animation}>
+        <Lottie 
+            options={defaultOptions}
+            height={40}
+            width={40}
+          />
       </div>
+    </Link>
+    
+    }
 
   </div>
   <div className={styles.shapeDivider}>
