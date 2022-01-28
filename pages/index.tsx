@@ -5,6 +5,7 @@ import Projects from './projects'
 import { Footer } from '../components/Footer'
 import Technologies from './technologies'
 import { Header } from '../components/Header'
+import About from './about'
 
 
 const Home: NextPage = () => {
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
   </div> 
   
   
+  <About/>
   <Projects/>
 
     <Technologies/>

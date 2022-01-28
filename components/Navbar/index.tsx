@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import style from './style.module.scss'
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { BiHomeAlt } from 'react-icons/bi';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiTechnoHeart } from 'react-icons/gi';
 
-import { Link } from 'react-scroll'
+import { Link , animateScroll as Scroll} from 'react-scroll'
 
 interface buttonProps{
     button: boolean
@@ -14,18 +13,22 @@ interface buttonProps{
 export function Navbar({ button }: buttonProps) {
 
    const isToggled =  button;
-        console.log(isToggled)
+
+   function scrollToTop() {
+    Scroll.scrollToTop();
+  }
+       
     return(
         <nav>                   
             <div className={`${style.listMenu}  ${isToggled?style.active:''}`}>
                 <ul >
                     <li>
-                        <Link activeClass="active" to="home" spy={true} smooth={true} offset={50} duration={500} >
-                            <span><BiHomeAlt/></span>Home
-                        </Link>
+                        
+                            <a onClick={scrollToTop}><span><BiHomeAlt/></span>Home</a>
+                        
                     </li>
                     <li>
-                        <Link activeClass="active" to="home" spy={true} smooth={true} offset={50} duration={500} >
+                        <Link activeClass="active" to="about" spy={true} smooth={true} offset={50} duration={500} >
                             <span><BsFillPersonLinesFill/></span> Who Am I
                         </Link>
                     </li> 
