@@ -6,9 +6,19 @@ import { Footer } from '../components/Footer'
 import Technologies from './technologies'
 import { Header } from '../components/Header'
 import About from './about'
+import Lottie from 'react-lottie'
 
+import animationData from '../lotties/downAnimation.json'
 
 const Home: NextPage = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
   return (<><div className={styles.home}>
     <Header/>
     <div className={styles.container} id="home">
@@ -33,6 +43,14 @@ const Home: NextPage = () => {
         <img src="/profile.jpg" alt="Weslley Oliveira"/>
       </section>             
     </div>
+
+    <div className={styles.animation}>
+    <Lottie 
+	      options={defaultOptions}
+        height={40}
+        width={40}
+      />
+      </div>
 
   </div>
   <div className={styles.shapeDivider}>
