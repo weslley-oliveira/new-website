@@ -61,10 +61,9 @@ const Home: NextPage = () => {
         <img src="/profile.jpg" alt="Weslley Oliveira"/>
       </section>             
     </div>
-
-    {scrollPosition <= 100 &&
+    
     <Link activeClass="active" to="about" spy={true} smooth={true} offset={0} duration={1000} >
-      <div className={styles.animation}>
+      <div className={`${styles.animation} ${scrollPosition >= 100 && styles.hide}`}>
         <Lottie 
             options={defaultOptions}
             height={60}
@@ -72,8 +71,7 @@ const Home: NextPage = () => {
           />
       </div>
     </Link>
-    
-    }
+
 
   </div>
   <div className={styles.shapeDivider}>
