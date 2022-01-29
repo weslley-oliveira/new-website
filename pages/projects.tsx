@@ -8,12 +8,11 @@ const Projects: NextPage = () => {
       <main className={styles.main}>
         
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Projects
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+         Some problems solved by me
         </p>
 
         <div className={styles.grid}>
