@@ -24,7 +24,8 @@ export function Header() {
     }, []);
 
     console.log("teste",isToggled)
-    return (<>
+    return (
+        
         <header className={styles.header}>
             <div className={styles.title}>
                 <h2> {"<"}{Title}<span>{"/>"}</span> </h2>
@@ -36,8 +37,8 @@ export function Header() {
                 <div className={styles.line1}></div>
                 <div className={styles.line2}></div>
                 <div className={styles.line3}></div>
-            </div>           
+            </div>   
+            <Navbar button={isToggled} setIsToggled={setIsToggled}/>        
         </header>
-        <Navbar button={isToggled} setIsToggled={setIsToggled}/>
-    </>)
+    )
 }

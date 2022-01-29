@@ -1,5 +1,4 @@
 import styles from './style.module.scss'
-import Image from 'next/image'
 
 export function Footer(){
     return(
@@ -9,10 +8,8 @@ export function Footer(){
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          Powered by
+          <span className={styles.logo}>  Weslley Oliveira</span>
         </a>
       </footer>
     )

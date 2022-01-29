@@ -1,13 +1,15 @@
 .listMenu{
 
     ul{
+      
       list-style-type: none;
       display: flex;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       justify-content: space-between;
       gap: 1rem;
       
-      li{
+      li{ 
+          cursor: pointer;
           padding-left: 1rem;
 
           span{
@@ -33,8 +35,6 @@
     width: 80vw;
     height: 100%;
     
-    
-       
     color: white;
     
     font-weight: normal;
