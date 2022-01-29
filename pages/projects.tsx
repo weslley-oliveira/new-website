@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { BsGithub } from 'react-icons/bs'
 import styles from '../styles/Projects.module.scss'
 
 
@@ -17,8 +18,18 @@ const Projects: NextPage = () => {
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+            <img src="/profile.jpg" alt="Weslley Oliveira"/>
+            <p>Name</p>
+            <h2>First Project</h2>
+            <p>Description</p>
+            <h3>Find in-depth information about Next.js features and API.</h3>
+            <p>Technologies</p>
+            <div>
+              <BsGithub/>
+              <BsGithub/>
+              <BsGithub/>
+              <BsGithub/>
+            </div>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
