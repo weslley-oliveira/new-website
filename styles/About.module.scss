@@ -11,6 +11,8 @@
   position: relative;
   margin-bottom: 3px;
 
+  border-bottom: solid 50px var(--bg);
+
 }
 
 .main {
@@ -70,7 +72,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  border-bottom: solid 50px var(--bg);
+ 
   svg {
     position: relative;
     display: block;
