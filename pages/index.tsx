@@ -52,8 +52,8 @@ const Home: NextPage = () => {
     <div className={styles.content}>       
       <main className={styles.main}>
         <ScrollAnimation 
-          delay={500}
-          animateIn="animate__slideInDown"
+          delay={1000}
+          animateIn="animate__fadeIn"
           initiallyVisible={true}
           animateOnce={true}
         >
@@ -62,8 +62,8 @@ const Home: NextPage = () => {
           </h1>
         </ScrollAnimation>
         <ScrollAnimation
-          delay={700} 
-          animateIn="animate__slideInDown"
+          delay={1300} 
+          animateIn="animate__fadeIn"
           initiallyVisible={true}
           animateOnce={true}
         >
