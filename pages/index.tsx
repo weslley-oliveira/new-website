@@ -8,6 +8,8 @@ import { Header } from '../components/Header'
 import About from './about'
 import Lottie from 'react-lottie'
 
+import ScrollAnimation from 'react-animate-on-scroll';
+
 import animationData from '../lotties/downAnimation.json'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-scroll'
@@ -49,19 +51,51 @@ const Home: NextPage = () => {
     <Header/>
     <div className={styles.content}>       
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Hi, I am Weslley a problem solver.
-        </h1>
-        <p>
-          Front-end Web Developer, technology and programming.
-        </p>
+        <ScrollAnimation 
+          delay={500}
+          animateIn="animate__slideInDown"
+          initiallyVisible={true}
+          animateOnce={true}
+        >
+          <h1 className={styles.title}>
+            Hi, I am Weslley a problem solver.
+          </h1>
+        </ScrollAnimation>
+        <ScrollAnimation
+          delay={700} 
+          animateIn="animate__slideInDown"
+          initiallyVisible={true}
+          animateOnce={true}
+        >
+          <p>
+            Front-end Web Developer, technology and programming.
+          </p>
+        </ScrollAnimation>
+        
+        <ScrollAnimation 
+            delay={1000}
+            animateIn="animate__fadeIn"
+            animateOnce={true}            
+          >
         <div className={styles.action}>
-          <button className="first">Download CV</button>
-          <button>Contact Me</button> 
-        </div>       
+          
+            
+            <button className="first">Download CV</button>
+          
+            <button>Contact Me</button>
+          
+        </div>    
+        </ScrollAnimation>    
       </main>
       <section className={styles.section}>
+      <ScrollAnimation 
+            delay={200}
+            animateIn="animate__flipInX"      
+          >
+      
         <img src="/profile.jpg" alt="Weslley Oliveira"/>
+
+        </ScrollAnimation>
       </section>             
     </div>
     
