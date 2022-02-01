@@ -58,7 +58,7 @@ const Home: NextPage = () => {
           animateOnce={true}
         >
           <h1 className={styles.title}>
-            Hi, I am Weslley a problem solver.
+            Hi, I am a problem solver.
           </h1>
         </ScrollAnimation>
         <ScrollAnimation

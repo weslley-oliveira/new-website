@@ -44,17 +44,23 @@
     gap: 2rem;
     font-size: 1.75rem;
    
-    div{
+    a{
 
       width: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      transition: 0.5s;
       
       gap: .5rem;
       span {
         font-size: 0.7rem;
       }
+    }
+
+    a:hover{
+      transform: scale(1.2)
     }
     
     

@@ -21,7 +21,7 @@ const About: NextPage = () => {
 
         <ScrollAnimation animateIn="animate__fadeInUp">
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+            Hi, my name is Weslley Oliveira I'm a software engineer.
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -31,20 +31,20 @@ const About: NextPage = () => {
         
         <div className={styles.social}>
           <ScrollAnimation animateIn="animate__fadeInBottomLeft">
-            <div className={styles.github}>
+            <a className={styles.github} href="https://github.com/weslley-oliveira">
               <BsGithub/> <span>weslley-oliveira</span>
-            </div>
+            </a>
           </ScrollAnimation>
           <ScrollAnimation animateIn="animate__fadeInUp">
-            <div className={styles.linkedin}>
+            <a className={styles.linkedin} href="https://www.linkedin.com/in/weslley-oliveira-uk/">
               <BsLinkedin/> <span>weslley-oliveira-uk</span>
-            </div>
+            </a>
           </ScrollAnimation>
           
           <ScrollAnimation animateIn="animate__fadeInBottomRight">
-          <div className={styles.instagram}>
-            <BsInstagram/> <span>weslley-instagram</span>
-          </div>
+          <a className={styles.instagram} href="https://www.instagram.com/programador_uk/">
+            <BsInstagram/> <span>programador-uk</span>
+          </a>
           </ScrollAnimation>          
         </div>
        
