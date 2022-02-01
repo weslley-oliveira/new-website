@@ -23,7 +23,6 @@ export function Header() {
         };
     }, []);
 
-    console.log("teste",isToggled)
     return (
         
         <header className={styles.header}>

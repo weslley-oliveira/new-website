@@ -5,34 +5,47 @@ import {  BsGithub } from 'react-icons/bs';
 import {  BsLinkedin } from 'react-icons/bs';
 import {  BsInstagram } from 'react-icons/bs';
 
+import ScrollAnimation from 'react-animate-on-scroll';
+
 const About: NextPage = () => {
   return (
     <>
     <div className={styles.container} id="about">
-      <main className={styles.main}>
-        
-        <h1 className={styles.title}>
-          Who Am I <span>?</span>
-        </h1>
+      <main className={styles.main}>        
+     
+        <ScrollAnimation animateIn="animate__fadeInUpBig">
+          <h1 className={styles.title}>
+            Who Am I <span>?</span>
+          </h1>
+        </ScrollAnimation>        
 
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident
-        </p>
+        <ScrollAnimation animateIn="animate__fadeInUp">
+          <p className={styles.description}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident
+          </p>
+        </ScrollAnimation>
         
         <div className={styles.social}>
-          <div className={styles.github}>
-            <BsGithub/> <span>weslley-oliveira</span>
-          </div>
-          <div className={styles.linkedin}>
-            <BsLinkedin/> <span>weslley-oliveira-uk</span>
-          </div>
+          <ScrollAnimation animateIn="animate__fadeInBottomLeft">
+            <div className={styles.github}>
+              <BsGithub/> <span>weslley-oliveira</span>
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="animate__fadeInUp">
+            <div className={styles.linkedin}>
+              <BsLinkedin/> <span>weslley-oliveira-uk</span>
+            </div>
+          </ScrollAnimation>
+          
+          <ScrollAnimation animateIn="animate__fadeInBottomRight">
           <div className={styles.instagram}>
             <BsInstagram/> <span>weslley-instagram</span>
-          </div>          
+          </div>
+          </ScrollAnimation>          
         </div>
        
       </main>
