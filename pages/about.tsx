@@ -20,8 +20,8 @@ const About: NextPage = () => {
         </ScrollAnimation>        
 
         <ScrollAnimation animateIn="animate__fadeInUp">
-          <p className={styles.description}>
-            Hi, my name is Weslley Oliveira I'm a software engineer.
+          <p className={styles.description}>          
+            Hi, my name is Weslley Oliveira I&apos;m a software engineer.
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -41,7 +41,7 @@ const About: NextPage = () => {
             </a>
           </ScrollAnimation>
           
-          <ScrollAnimation animateIn="animate__fadeInBottomRight">
+          <ScrollAnimation animateIn="animate__fadeInBottomRight">            
           <a className={styles.instagram} href="https://www.instagram.com/programador_uk/">
             <BsInstagram/> <span>programador-uk</span>
           </a>
