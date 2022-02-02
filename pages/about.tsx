@@ -1,9 +1,7 @@
 import type { NextPage } from 'next'
 import styles from '../styles/About.module.scss'
 
-import {  BsGithub } from 'react-icons/bs';
-import {  BsLinkedin } from 'react-icons/bs';
-import {  BsInstagram } from 'react-icons/bs';
+import {  BsGithub, BsLinkedin, BsInstagram} from 'react-icons/bs';
 
 import ScrollAnimation from 'react-animate-on-scroll';
 

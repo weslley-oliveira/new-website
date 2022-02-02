@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { RiReactjsFill, RiHtml5Fill } from 'react-icons/ri'
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiStyledcomponents } from 'react-icons/si'
+import {  BsGithub , BsArrowRight} from 'react-icons/bs';
 import { FaSass} from 'react-icons/fa'
 import styles from '../styles/Projects.module.scss'
 
@@ -15,7 +16,7 @@ const Projects: NextPage = () => {
         </h1>
 
         <p className={styles.description}>
-         Some problems solved by me
+         Some projects from my Github <BsGithub/> 
         </p>
 
         <div className={styles.grid}>
@@ -80,6 +81,10 @@ const Projects: NextPage = () => {
           </div>
 
         </div>
+
+        <a href="https://github.com/weslley-oliveira" className={styles.description}>
+         See more <BsGithub/> <BsArrowRight/>
+        </a>
       </main>
 
     </div>
