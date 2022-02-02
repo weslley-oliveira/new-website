@@ -47,66 +47,59 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1200px;
+  gap: 2rem;
 }
 
 .card {
-  margin: 0.75rem 0;
-  padding: 1.5rem;
-
-  
+  max-width: 400px;
+  transition: 0.6s;
 
   background-color: var(--bg-ligth);
-  border-radius: 15px;
-  
-  p {
-    font-size: 0.75rem !important;
-    opacity: 0.75;
-  }
+  border-radius: 10px;
 
-  h3 {
-    margin: 0 0 1rem;
-    font-weight: normal;
-  }
-  
   img {
+    border-radius: 10px 10px 0px 0px;
     width: 100%;
   }
 
   div {
     display: flex;
-    align-content: center;
-    justify-content: space-between;
+    flex-direction: column; 
+    
+    padding: 0 1.5rem;
 
-    padding: 0.5rem 0;
-    font-size: 2rem;
+    h2{
+      margin: 1.5rem 0;
+    }
+
+    h3 {
+      margin: 0;
+      font-weight: normal;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      
+      font-size: 2rem;
+
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+    
+    
   }
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  transform: scale(1.01);
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .grid {
     width: 100%;
     flex-direction: column;
