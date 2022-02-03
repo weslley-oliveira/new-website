@@ -5,6 +5,7 @@ import Projects from './projects'
 import { Footer } from '../components/Footer'
 import Technologies from './technologies'
 import { Header } from '../components/Header'
+import { Contact } from '../components/Contact'
 import About from './about'
 import Lottie from 'react-lottie'
 
@@ -16,6 +17,7 @@ import { Link } from 'react-scroll'
 
 const Home: NextPage = () => {
 
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
         const position = window.pageYOffset;
@@ -49,6 +51,7 @@ const Home: NextPage = () => {
       </Head>
   <div className={styles.container}><div className={styles.home}>
     <Header/>
+    <Contact modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
     <div className={styles.content}>       
       <main className={styles.main}>
         <ScrollAnimation 
@@ -82,7 +85,7 @@ const Home: NextPage = () => {
             
             <button className="first">Download CV</button>
           
-            <button>Contact Me</button>
+            <button onClick={() => setIsOpen(true)}>Contact Me</button>
           
         </div>    
         </ScrollAnimation>    
