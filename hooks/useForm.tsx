@@ -15,11 +15,17 @@ export const useForm = (callback: any, initialState = {}) => {
         await callback(); // triggering the callback
     };
 
+    // reset
+    const reset = () => {
+        setValues(initialState);
+    };
+
     // return values
     return {
         onChange,
         onSubmit,
         values,
+        reset,
     };
 
 }

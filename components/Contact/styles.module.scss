@@ -7,40 +7,44 @@
     bottom: auto;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    background-color: var(--bg);
+    background-color:rgba(18, 18, 20, 0.7);
     border: solid 0.1rem var(--contrast);
 
+    min-width: 600px;
+    min-height: 600px;
+
+    padding: 1rem;
     .header {
         display: flex;
         justify-content: space-between;
-        padding: 0.5rem;
-
+       
         p {
             padding: 0;
-            margin: 0;
+            margin: 0;            
         }
 
-        button {
-            width: 15px;
-            height: 15px;
-            margin: 0;
-            padding: 0;
+        div {
+            display: flex;
+            gap: 8px;
+            button {
+                width: 15px;
+                height: 15px;
+                margin: 0;
+                padding:0;
+                background-color: red;
 
-            background-color: red;
-
-            border: none;
-            border-radius: 100%;
+                border: none;
+                border-radius: 100%;
+            }
         }
     }
 
 
     form {
-
-        padding: 0.5rem;
         display: flex;
         flex-direction: column;
 
-        
+        margin-top: 2rem;        
         p{  
             font-weight: bold;
             color: var(--highlight);
@@ -48,33 +52,39 @@
             margin: 0;
 
             font-size: large;
+            transition: 0.2s;
 
             span {
-                color: var(--contrast)
+                color: var(--contrast);                
             }
         }
 
         div {
             span {
+                font-weight: bold;
                 color: var(--highlight);
             }
         }
 
-        input, textarea{
-            background-color: var(--bg);
+        input{
+            background-color: rgba(18, 18, 20, 0);
             border: none;
             caret-color: var(--contrast);
 
+            font-weight: bold;
             font-size: large;
             color: white;
         }
 
-        
-        input:focus, textarea:focus{
+        input:focus{
             outline: none;
         }
         
     }
+
+    form :last-of-type input{
+       width: 90%;
+    }  
     
 }
 

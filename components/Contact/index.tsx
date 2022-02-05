@@ -2,6 +2,7 @@ import Modal from 'react-modal';
 import styles from './styles.module.scss'
 
 import { useForm } from '../../hooks/useForm';
+import { useEffect, useState } from 'react';
 
 interface contactProps{
     setIsOpen: (arg: boolean) => void;
@@ -10,9 +11,26 @@ interface contactProps{
 
 export function Contact({modalIsOpen, setIsOpen} : contactProps){
     
-    
+    const [email, setEmail] = useState("hidden")
+    const [message, setMessage] = useState("hidden")
+    const [error, setError] = useState("")
+
+    const delay = 2;
+    useEffect(
+        () => {
+          let timer1 = setTimeout(() => setError(""), delay * 1000);    
+          
+          return () => {
+            clearTimeout(timer1);
+          };
+        },[error]);
+
     function closeModal() {
+        reset()
         setIsOpen(false);
+        setEmail("hidden")
+        setMessage("hidden")
+        setError("")
     }
 
     function handleAnswerChange(event : any){
@@ -22,17 +40,20 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 const form = event.target.form;
                 const index = [...form].indexOf(event.target);
 
-                if(index <= 1){
-                    form.elements[index + 1].focus();
+                if(index <= 0){
+                    form.elements[index + 1].focus();  
+                    setEmail("visible")                  
                     event.preventDefault();
+                } else if(index <= 1){
+                    form.elements[index + 1].focus();  
+                    setMessage("visible")                    
                 } else {
-                    alert("please leave your message")
+                    setError("please leave your message")
                 }
-
                 
             } else {
                 if(values.message.length <= 10){
-                    alert("your message is to short")
+                    setError("your message is to short speak with me")
                 } else {
                     alert("enviado"+values)
                 }
@@ -51,7 +72,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
     };
 
     // getting the event handlers from our custom hook
-    const { onChange, onSubmit, values } = useForm(
+    const { onChange, onSubmit, values, reset } = useForm(
         loginUserCallback,
         initialState
     );
@@ -73,7 +94,11 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 overlayClassName={styles.overlay}
             >   
             <header className={styles.header}>
-                <button onClick={closeModal}/>
+                <div>
+                    <button onClick={closeModal}/> 
+                    <button onClick={closeModal}/>                    
+                    <button onClick={()=>setEmail("hidden")}/>
+                </div>
                 <p>contact-me:~</p>
                 <span>{""}</span>
             </header>
@@ -91,24 +116,25 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                             required 
                         />
                     </div>
+
+                    <p style={{visibility: `${email}`}}>email <span>~</span></p>
                     <div>
-                        <span>{">"}</span>    
+                        <span style={{visibility: `${email}`}}>{">"}</span>    
                         <input 
                             name="email" 
-                            type="text"                        
-                            placeholder="email"
+                            type="text"
                             onChange={onChange}
                             onKeyPress={handleAnswerChange}
                             required
                         />
                     </div>
 
+                    <p style={{visibility: `${message}`}}>message <span>~</span></p>
                     <div>
-                        <span>{">"}</span>                    
+                        <span style={{visibility: `${message}`}}>{">"}</span>                    
                         <input 
                             name="message" 
-                            type="text"                         
-                            placeholder="message"
+                            type="text"
                             onChange={onChange}
                             onKeyPress={handleAnswerChange}
                             required
@@ -116,8 +142,15 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                     </div>
                     
                     {values.message.length >= 10 && 
-                    <span>Press enter to submit</span>
+                        <span>press enter to submit</span>
+                    } 
+                    {error === "please leave your message" && 
+                        <span>{error}</span>
                     }
+                    {error === "your message is to short speak with me" && 
+                        <span>{error}</span>
+                    }
+                    
                 </form>
                
                 
