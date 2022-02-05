@@ -8,6 +8,73 @@
     margin-right: -50%;
     transform: translate(-50%, -50%);
     background-color: var(--bg);
+    border: solid 0.1rem var(--contrast);
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        button {
+            width: 15px;
+            height: 15px;
+            margin: 0;
+            padding: 0;
+
+            background-color: red;
+
+            border: none;
+            border-radius: 100%;
+        }
+    }
+
+
+    form {
+
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        
+        p{  
+            font-weight: bold;
+            color: var(--highlight);
+            padding: 0;
+            margin: 0;
+
+            font-size: large;
+
+            span {
+                color: var(--contrast)
+            }
+        }
+
+        div {
+            span {
+                color: var(--highlight);
+            }
+        }
+
+        input, textarea{
+            background-color: var(--bg);
+            border: none;
+            caret-color: var(--contrast);
+
+            font-size: large;
+            color: white;
+        }
+
+        
+        input:focus, textarea:focus{
+            outline: none;
+        }
+        
+    }
     
 }
 
