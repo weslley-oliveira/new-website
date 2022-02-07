@@ -1,6 +1,8 @@
 import Modal from 'react-modal';
 import styles from './styles.module.scss'
 
+import Draggable from 'react-draggable';
+
 import { useForm } from '../../hooks/useForm';
 import { useEffect, useState } from 'react';
 
@@ -11,8 +13,8 @@ interface contactProps{
 
 export function Contact({modalIsOpen, setIsOpen} : contactProps){
     
-    const [email, setEmail] = useState("hidden")
-    const [message, setMessage] = useState("hidden")
+    const [email, setEmail] = useState<String>("hidden")
+    const [message, setMessage] = useState<String>("hidden")
     const [error, setError] = useState("")
 
     const delay = 2;
@@ -86,13 +88,17 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
     
     return(
 
-        <div >            
+        
+        <div> 
+                    
             <Modal
                 isOpen={modalIsOpen}                
                 onRequestClose={closeModal}
-                className={styles.container}
+                className={styles.modal}
                 overlayClassName={styles.overlay}
-            >   
+            >  
+            <Draggable>
+            <div className={styles.container}>
             <header className={styles.header}>
                 <div>
                     <button onClick={closeModal}/> 
@@ -103,7 +109,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 <span>{""}</span>
             </header>
                 <form>                    
-                    <p>name <span>~</span></p>
+                    <p>/ <span>~</span></p>
                     <div>
                         <span>{">"}</span>
                         <input 
@@ -117,24 +123,28 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                         />
                     </div>
 
-                    <p style={{visibility: `${email}`}}>email <span>~</span></p>
+                    <p className={`${email === 'hidden' && styles.visibility}` }>/{values.name}/<span>~</span></p>
                     <div>
-                        <span style={{visibility: `${email}`}}>{">"}</span>    
+                        <span className={`${email === 'hidden' && styles.visibility}` }>{">"}</span>    
                         <input 
                             name="email" 
                             type="text"
+                            className={`${email === 'hidden' && styles.hidden}` }
+                            placeholder="type your best email"  
                             onChange={onChange}
                             onKeyPress={handleAnswerChange}
                             required
                         />
                     </div>
 
-                    <p style={{visibility: `${message}`}}>message <span>~</span></p>
+                    <p className={`${message === 'hidden' && styles.visibility}`}>/{values.name}/email:{values.email}<span>~</span></p>
                     <div>
-                        <span style={{visibility: `${message}`}}>{">"}</span>                    
-                        <input 
+                        <span className={`${message === 'hidden' && styles.visibility}`}>{">"}</span>                    
+                        <input                             
                             name="message" 
                             type="text"
+                            className={`${message === 'hidden' && styles.hidden}` }
+                            placeholder="type your message"
                             onChange={onChange}
                             onKeyPress={handleAnswerChange}
                             required
@@ -142,7 +152,9 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                     </div>
                     
                     {values.message.length >= 10 && 
+                    
                         <span>press enter to submit</span>
+                       
                     } 
                     {error === "please leave your message" && 
                         <span>{error}</span>
@@ -152,11 +164,14 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                     }
                     
                 </form>
+                </div>
+                </Draggable>
                
                 
                 
             </Modal>
+            
         </div>
-
+        
     )
 }

@@ -1,7 +1,12 @@
 import { useState } from "react";
 
+interface Values {
+    name:String;
+    email: String;
+    message:String;
+}
 // useForm functional componen
-export const useForm = (callback: any, initialState = {}) => {
+export const useForm = (callback: any, initialState : Values) => {
     const [values, setValues] = useState(initialState);
 
     // onChange

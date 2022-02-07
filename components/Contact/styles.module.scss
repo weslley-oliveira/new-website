@@ -1,8 +1,13 @@
+.modal{
+    background-color:rgba(18, 18, 20, 0);    
+}
+
 .container {
-    
+    cursor: move;
+
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+   
     right: auto;
     bottom: auto;
     margin-right: -50%;
@@ -74,6 +79,16 @@
             font-weight: bold;
             font-size: large;
             color: white;
+
+            
+        }
+
+        .hidden::placeholder{
+            opacity: 0;
+        }
+        
+        .visibility {
+            visibility: hidden;
         }
 
         input:focus{
