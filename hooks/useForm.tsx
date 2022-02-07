@@ -12,13 +12,7 @@ export const useForm = (callback: any, initialState : Values) => {
     // onChange
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [event.target.name]: event.target.value });
-    };
-
-    // onSubmit
-    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        await callback(); // triggering the callback
-    };
+    };    
 
     // reset
     const reset = () => {
@@ -27,8 +21,7 @@ export const useForm = (callback: any, initialState : Values) => {
 
     // return values
     return {
-        onChange,
-        onSubmit,
+        onChange,      
         values,
         reset,
     };

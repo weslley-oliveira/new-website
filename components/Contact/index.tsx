@@ -74,7 +74,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
     };
 
     // getting the event handlers from our custom hook
-    const { onChange, onSubmit, values, reset } = useForm(
+    const { onChange, values, reset } = useForm(
         loginUserCallback,
         initialState
     );
