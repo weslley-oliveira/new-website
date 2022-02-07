@@ -136,5 +136,24 @@
         min-height: 80vh;
 
         transform: none;
+
+        .header {
+            div {
+                display: flex;
+                gap: 1rem;
+                button {
+                    width: 20px;
+                    height: 20px;
+                    margin: 0;
+                    padding:0;
+                    background-color: red;
+    
+                    border: none;
+                    border-radius: 100%;
+                }
+            }
+        }
     }
+
+    
 }
