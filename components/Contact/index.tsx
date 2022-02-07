@@ -13,20 +13,33 @@ interface contactProps{
 
 export function Contact({modalIsOpen, setIsOpen} : contactProps){
     
+    const [display, setDisplay] = useState<String>("")
     const [email, setEmail] = useState<String>("hidden")
     const [message, setMessage] = useState<String>("hidden")
     const [error, setError] = useState("")
 
+
+
     const delay = 2;
     useEffect(
         () => {
-          let timer1 = setTimeout(() => setError(""), delay * 1000);    
-          
-          return () => {
+          if(window.innerWidth <= 640) {
+            setDisplay("mobile")
+          } else {
+            setDisplay("desktop")
+          }
+        },[]);
+    
+    useEffect(
+        () => {
+            let timer1 = setTimeout(() => setError(""), delay * 1000);    
+            
+            return () => {
             clearTimeout(timer1);
-          };
+            };
         },[error]);
 
+        console.log(display)
     function closeModal() {
         reset()
         setIsOpen(false);
@@ -97,7 +110,9 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 className={styles.modal}
                 overlayClassName={styles.overlay}
             >  
-            <Draggable>
+
+            {display === "desktop" &&
+            <Draggable> 
             <div className={styles.container}>
             <header className={styles.header}>
                 <div>
@@ -166,8 +181,78 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 </form>
                 </div>
                 </Draggable>
-               
+            }  
+
+            {display === "mobile" &&
+            <div className={styles.container}>
+            <header className={styles.header}>
+                <div>
+                    <button onClick={closeModal}/> 
+                    <button onClick={closeModal}/>                    
+                    <button onClick={()=>setEmail("hidden")}/>
+                </div>
+                <p>contact-me:~</p>
+                <span>{""}</span>
+            </header>
+                <form>                    
+                    <p>/ <span>~</span></p>
+                    <div>
+                        <span>{">"}</span>
+                        <input 
+                            autoFocus 
+                            name="name" 
+                            type="text" 
+                            placeholder="type your name to start"
+                            onChange={onChange}
+                            onKeyPress={handleAnswerChange}
+                            required 
+                        />
+                    </div>
+
+                    <p className={`${email === 'hidden' && styles.visibility}` }>/{values.name}/<span>~</span></p>
+                    <div>
+                        <span className={`${email === 'hidden' && styles.visibility}` }>{">"}</span>    
+                        <input 
+                            name="email" 
+                            type="text"
+                            className={`${email === 'hidden' && styles.hidden}` }
+                            placeholder="type your best email"  
+                            onChange={onChange}
+                            onKeyPress={handleAnswerChange}
+                            required
+                        />
+                    </div>
+
+                    <p className={`${message === 'hidden' && styles.visibility}`}>/{values.name}/email:{values.email}<span>~</span></p>
+                    <div>
+                        <span className={`${message === 'hidden' && styles.visibility}`}>{">"}</span>                    
+                        <input                             
+                            name="message" 
+                            type="text"
+                            className={`${message === 'hidden' && styles.hidden}` }
+                            placeholder="type your message"
+                            onChange={onChange}
+                            onKeyPress={handleAnswerChange}
+                            required
+                        />
+                    </div>
+                    
+                    {values.message.length >= 10 && 
+                    
+                        <span>press enter to submit</span>
+                       
+                    } 
+                    {error === "please leave your message" && 
+                        <span>{error}</span>
+                    }
+                    {error === "your message is to short speak with me" && 
+                        <span>{error}</span>
+                    }
+                    
+                </form>
+                </div>
                 
+        }
                 
             </Modal>
             

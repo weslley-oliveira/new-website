@@ -126,11 +126,15 @@
 
 @media (max-width: 640px) {
     .container{
-        margin: 0 auto;
-        top: 10vh;
-        left: 2.5vw;
+        
+        top: 0;
+        left: 0;
+       position: relative;
+       margin-right: 0;
 
-        min-width: 90vw;
+       min-width: 90vw;
         min-height: 80vh;
+
+        transform: none;
     }
 }
