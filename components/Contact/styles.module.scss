@@ -83,11 +83,28 @@
             font-weight: bold;
             font-size: large;
             color: white;
-
+        }
+        
+        .review {
+            max-width: 500px;
+            code {
+                color: var(--contrast);
+                p{  
+                    padding-left: 1.5rem;
+                    color: var(--contrast);
+                    font-weight: lighter;
+                    span {
+                        font-weight: lighter;
+                    }
+                }
+            }
             
         }
 
         .hidden::placeholder{
+            opacity: 0;
+        }
+        .hidden{
             opacity: 0;
         }
         
