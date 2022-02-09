@@ -49,11 +49,10 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
         setError("")
     }
 
-    function handleAnswerChange(event : any){
-		if(event.key === 'Enter'){
+    function handleNextLine(event : any){
+		if(event.key.toLowerCase() === 'enter'){
             const form = event.target.form;
-            const index = [...form].indexOf(event.target);
-           
+            const index = [...form].indexOf(event.target);           
 
             if(index <= 0){
                 form.elements[index + 1].focus();   
@@ -67,6 +66,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 if(values.message.length >= 20){
                     form.elements[index + 1].focus();
                     setShow("message") 
+                    setMessage("men")
                 } else {
                     setError("Your message is to short")
                 }
@@ -84,10 +84,10 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
 
     function sendMessage(event: any){
        
-        if(event.key === "Y"){
+        if(event.key.toLowerCase() === "y"){
             setError("okay")
-        } else if(event.key === "N"){
-            setError("fechar")
+        } else if(event.key.toLowerCase() === "n"){
+            closeModal()
         }else {
             setError("please press Y or N")
         }
@@ -124,7 +124,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
             >  
 
             {display === "desktop" &&
-            <Draggable> 
+            // <Draggable> 
             <div className={styles.container}>
                 <header className={styles.header}>
                     <div>
@@ -145,7 +145,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                                 type="text" 
                                 placeholder="type your name to start"
                                 onChange={onChange}
-                                onKeyPress={handleAnswerChange}
+                                onKeyPress={handleNextLine}
                                 required 
                             />
                         </div>
@@ -159,7 +159,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                                 className={`${email === 'hidden' && styles.hidden}` }
                                 placeholder="type your best email"  
                                 onChange={onChange}
-                                onKeyPress={handleAnswerChange}
+                                onKeyPress={handleNextLine}
                                 required
                             />
                         </div>
@@ -173,7 +173,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                                 className={`${message === 'hidden' && styles.hidden}` }
                                 placeholder="type your message"
                                 onChange={onChange}
-                                onKeyPress={handleAnswerChange}
+                                onKeyPress={handleNextLine}
                                 required
                             />
                         </div>
@@ -197,7 +197,6 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                                 className={`${show !== 'message' && styles.hidden}` }
                                 placeholder=""
                                 value="do you want to send it? press Y or N"
-                                onChange={onChange}
                                 onKeyPress={sendMessage}
                                 required
                             />
@@ -205,80 +204,8 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                         <span>{error}</span>
                 </form>
             </div>
-            </Draggable>
-            }  
-
-            {display === "mobile" &&
-            <div className={styles.container}>
-            <header className={styles.header}>
-                <div>
-                    <button onClick={closeModal}/> 
-                    <button onClick={closeModal}/>                    
-                    <button onClick={()=>setEmail("hidden")}/>
-                </div>
-                <p>contact-me:~</p>
-                <span>{""}</span>
-            </header>
-                <form>                    
-                    <p>/ <span>~</span></p>
-                    <div>
-                        <span>{">"}</span>
-                        <input 
-                            autoFocus 
-                            name="name" 
-                            type="text" 
-                            placeholder="type your name to start"
-                            onChange={onChange}
-                            onKeyPress={handleAnswerChange}
-                            required 
-                        />
-                    </div>
-
-                    <p className={`${email === 'hidden' && styles.visibility}` }>/{values.name}/<span>~</span></p>
-                    <div>
-                        <span className={`${email === 'hidden' && styles.visibility}` }>{">"}</span>    
-                        <input 
-                            name="email" 
-                            type="text"
-                            className={`${email === 'hidden' && styles.hidden}` }
-                            placeholder="type your best email"  
-                            onChange={onChange}
-                            onKeyPress={handleAnswerChange}
-                            required
-                        />
-                    </div>
-
-                    <p className={`${message === 'hidden' && styles.visibility}`}>/{values.name}/email:{values.email}<span>~</span></p>
-                    <div>
-                        <span className={`${message === 'hidden' && styles.visibility}`}>{">"}</span>                    
-                        <input                             
-                            name="message" 
-                            type="text"
-                            className={`${message === 'hidden' && styles.hidden}` }
-                            placeholder="type your message"
-                            onChange={onChange}
-                            onKeyPress={handleAnswerChange}
-                            required
-                        />
-                    </div>
-                    
-                    {values.message.length >= 10 && 
-                    
-                        <span>press enter to submit</span>
-                       
-                    } 
-                    {error === "please leave your message" && 
-                        <span>{error}</span>
-                    }
-                    {error === "your message is to short speak with me" && 
-                        <span>{error}</span>
-                    }
-                    
-                </form>
-                </div>
-                
-        }
-                
+            // </Draggable>
+            }                   
             </Modal>
             
         </div>
