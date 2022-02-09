@@ -1,19 +1,22 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-scroll'
+
 import styles from '../styles/Home.module.scss'
+
 import Projects from './projects'
-import { Footer } from '../components/Footer'
+import About from './about'
 import Technologies from './technologies'
+
+import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Contact } from '../components/Contact'
-import About from './about'
-import Lottie from 'react-lottie'
 
+import Lottie from 'react-lottie'
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import animationData from '../lotties/downAnimation.json'
-import { useEffect, useState } from 'react'
-import { Link } from 'react-scroll'
 
 const Home: NextPage = () => {
 

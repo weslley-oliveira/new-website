@@ -93,22 +93,19 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
             setError("please press Y or N")
         }
     }
-
-    // defining the initial state for the form
+   
     const initialState = {
         name: "",
         email: "",
         message: "",
 
     };
-
-    // getting the event handlers from our custom hook
+    
     const { onChange, values, reset } = useForm(
         loginUserCallback,
         initialState
     );
-
-    // a submit function that will execute upon form submission
+    
     async function loginUserCallback() {
 
 
