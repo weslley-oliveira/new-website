@@ -13,7 +13,6 @@ interface contactProps{
 
 export function Contact({modalIsOpen, setIsOpen} : contactProps){
     
-    const [display, setDisplay] = useState<String>("")
     const [email, setEmail] = useState<String>("hidden")
     const [message, setMessage] = useState<String>("hidden")
     const [show, setShow] = useState<String>("hidden")
@@ -21,15 +20,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
 
 
 
-    const delay = 2;
-    useEffect(
-        () => {
-          if(window.innerWidth <= 640) {
-            setDisplay("mobile")
-          } else {
-            setDisplay("desktop")
-          }
-        },[]);
+    const delay = 2;   
     
     useEffect(
         () => {
@@ -123,8 +114,8 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                 overlayClassName={styles.overlay}
             >  
 
-            {display === "desktop" &&
-            // <Draggable> 
+           
+            {/* // <Draggable>  */}
             <div className={styles.container}>
                 <header className={styles.header}>
                     <div>
@@ -204,8 +195,8 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                         <span>{error}</span>
                 </form>
             </div>
-            // </Draggable>
-            }                   
+            {/* // </Draggable> */}
+                               
             </Modal>
             
         </div>
