@@ -133,7 +133,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                             <input 
                                 autoFocus 
                                 name="name" 
-                                type="text" 
+                                type="tel" 
                                 placeholder="type your name to start"
                                 onChange={onChange}
                                 onKeyPress={handleNextLine}
@@ -146,7 +146,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                             <span className={`${email === 'hidden' && styles.visibility}` }>{">"}</span>    
                             <input 
                                 name="email" 
-                                type="text"
+                                type="tel"
                                 className={`${email === 'hidden' && styles.hidden}` }
                                 placeholder="type your best email"  
                                 onChange={onChange}
@@ -160,7 +160,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                             <span className={`${message === 'hidden' && styles.visibility}`}>{">"}</span>                    
                             <input                             
                                 name="message" 
-                                type="text"
+                                type="tel"
                                 className={`${message === 'hidden' && styles.hidden}` }
                                 placeholder="type your message"
                                 onChange={onChange}
@@ -184,7 +184,7 @@ export function Contact({modalIsOpen, setIsOpen} : contactProps){
                             <span className={`${show !== 'message' && styles.visibility}`}>{">"}</span>                    
                             <input                             
                                 name="confirm" 
-                                type="text"
+                                type="tel"
                                 className={`${show !== 'message' && styles.hidden}` }
                                 placeholder=""
                                 value="do you want to send it? press Y or N"
