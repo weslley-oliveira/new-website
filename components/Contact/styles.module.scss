@@ -6,22 +6,15 @@
 .container {
     cursor: move;
 
+    position: absolute;    
+    top:10%;
+    min-width: 500px;
+    min-height: 500px;
+
+    padding: 1rem;    
     
-    position: absolute;
-    
-   
-    right: auto;
-    bottom: -10;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
     background-color:rgba(18, 18, 20, 0.7);
     border: solid 0.1rem var(--contrast);
-
-    min-width: 600px;
-    min-height: 600px;
-
-    padding: 1rem;
-
     
     .header {
         display: flex;
