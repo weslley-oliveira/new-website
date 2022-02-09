@@ -1,8 +1,6 @@
 import Modal from 'react-modal';
 import styles from './styles.module.scss'
 
-import Draggable from 'react-draggable';
-
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm';
@@ -20,6 +18,24 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
     const [show, setShow] = useState<String>("hidden")
     const [error, setError] = useState("")
 
+    const [display, setDisplay] = useState("")
+
+    const handleResize = () => {
+        if (window.innerWidth <= 600) {
+            setDisplay("mobile")
+        } else {
+            setDisplay("desktop")
+        }
+      }
+
+    useEffect(
+        () => {            
+            window.addEventListener("resize", handleResize)                        
+        }, [modalIsOpen]
+    );
+
+    console.log("cade",display)
+
     const delay = 2;
     useEffect(
         () => {
@@ -31,6 +47,7 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
         }, [error]);
 
     function closeModal() {
+   
         reset()
         setIsOpen(false);
         setEmail("hidden")
@@ -84,13 +101,35 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
     }
 
     function sendMessage(event: any) {
+        event.preventDefault();
 
-        if (event.key.toLowerCase() === "y") {
-            setError("okay")
-        } else if (event.key.toLowerCase() === "n") {
-            closeModal()
-        } else {
-            setError("please press Y or N")
+        if(display === "desktop"){
+            if (event.key.toLowerCase() === "y") {
+                setError("okay")
+            } else if (event.key.toLowerCase() === "n") {
+                closeModal()
+            } else {
+                setError("please press Y or N")
+            }
+        }
+
+        if(display === "mobile"){
+
+            if(values.name.length >= 2){
+
+                if (validator.isEmail(values.email.toString())) {                   
+                    if(values.message.length >=10 ){
+                        setError("enviando msg")
+                    } else {
+                        setError("Your message is to short")                   
+                    }
+                } else {
+                    setError('Enter valid email!')
+                }                
+            } else {
+                setError("Please inform your name")
+            }
+            
         }
     }
    
@@ -114,13 +153,13 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
     return (
         <div>
+            {display === "desktop" &&
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 className={styles.modal}
                 overlayClassName={styles.overlay}
-            >
-                <Draggable>
+            >               
                     <div className={styles.container}>
                         <header className={styles.header}>
                             <div>
@@ -197,6 +236,7 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                                     type="text"
                                     className={`${show !== 'message' && styles.hidden}`}
                                     placeholder=""
+                                    readOnly
                                     value="do you want to send it? press Y or N"
                                     onKeyPress={sendMessage}
                                     required
@@ -205,10 +245,89 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                             {show === 'message' &&
                             <span>{error}</span>}                            
                         </form>
-                    </div>
-                </Draggable>
-
-            </Modal>
+                    </div> 
+            </Modal>}
+            {display === "mobile" &&
+                <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className={styles.modal}
+                overlayClassName={styles.overlay}
+            >               
+                    <div className={styles.container}>
+                        <header className={styles.header}>
+                            <div>
+                                <button onClick={closeModal} />
+                                <button onClick={closeModal} />
+                                <button onClick={() => setEmail("hidden")} />
+                            </div>
+                            <p>contact-me:~</p>
+                            <span>{""}</span>
+                        </header>
+                        <form>
+                            {/* Name */}
+                            <p>{values.name}<span>~</span></p>
+                            <div>
+                                <span>{">"}</span>
+                                <input
+                                    autoFocus
+                                    name="name"
+                                    type="text"
+                                    placeholder="type your name to start"
+                                    onChange={onChange}
+                                    onKeyPress={handleNextLine}                                    
+                                />
+                            </div>
+                            {/* Email */}
+                            <p>{values.name}/email:<span>~</span></p>
+                            <div>
+                                <span>{">"}</span>
+                                <input
+                                    name="email"
+                                    type="email"                                    
+                                    placeholder="type your best email"
+                                    onChange={onChange}
+                                    onKeyPress={handleNextLine}                                   
+                                />
+                            </div>
+                            
+                            <p>{values.name}/message:<span>~</span></p>
+                            <div>
+                                <span>{">"}</span>
+                                <input
+                                    name="message"
+                                    type="text"                                    
+                                    placeholder="type your message"
+                                    onChange={onChange}
+                                    onKeyPress={handleNextLine}                                    
+                                />
+                            </div>
+                                                     
+                            <p>{values.name}/confirm?<span>~</span></p>
+                            <div>
+                                <code>
+                                    {"{"}<br />
+                                    <p>name:<span>{values.name}</span></p>
+                                    <p>email:<span>{values.email}</span></p>
+                                    <p>message:<span>{values.message}</span></p>
+                                    {"}"}
+                                </code>
+                            </div>
+                            {/* Send Message */}
+                            <p>Hi {values.name}/<span>~</span></p>
+                            <div>
+                                <span>{">"} Do you want to sent it?</span>
+                               
+                            </div>
+                            <div className={styles.buttons}>
+                                <button onClick={sendMessage}>yes</button>
+                                <span>or</span>
+                                <button onClick={closeModal}>not</button>
+                            </div>
+                            <span>{error}</span>                                                        
+                        </form>
+                    </div> 
+            </Modal>}
         </div>
 
     )

@@ -162,6 +162,18 @@
                 }
             }
         }
+
+        .buttons {
+
+            button {
+                border: none;
+                font-size: 1.5rem;
+                color: white;
+                font-weight: bold;               
+                background-color: rgba(0, 0, 0, 0);
+            }
+            
+        }
     }
 
     
