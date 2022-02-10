@@ -1,6 +1,9 @@
 import Modal from 'react-modal';
 import styles from './styles.module.scss'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm';
@@ -17,6 +20,16 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
     const [message, setMessage] = useState<String>("hidden")
     const [show, setShow] = useState<String>("hidden")
     const [error, setError] = useState("")
+
+    const notify = () => toast.success('Your message has been sent! Thank you for contact me!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
 
     const [display, setDisplay] = useState("desktop")
 
@@ -36,7 +49,7 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
     console.log("cade",display)
 
-    const delay = 2;
+    let delay = 2;
     useEffect(
         () => {
             let timer1 = setTimeout(() => setError(""), delay * 1000);
@@ -45,6 +58,10 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                 clearTimeout(timer1);
             };
         }, [error]);
+    
+    function delayCloseModal() {
+            setTimeout(closeModal, 3000);
+        }
 
     function closeModal() {
    
@@ -107,8 +124,9 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
         if(display === "desktop"){
             if (event.key.toLowerCase() === "y") {
-                sendMail()
-                setError("Message sent!")
+                sendMail()                               
+                notify()
+                delayCloseModal()
             } else if (event.key.toLowerCase() === "n") {
                 closeModal()
             } else {
@@ -122,8 +140,9 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
                 if (validator.isEmail(values.email.toString())) {                   
                     if(values.message.length >=10 ){
-                        sendMail()
-                        setError("Message sent!")
+                        sendMail()                               
+                        notify()
+                        delayCloseModal()
                     } else {
                         setError("Your message is to short")                   
                     }
@@ -178,6 +197,7 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
     return (
         <div>
+            <ToastContainer />
             {display === "desktop" &&
             <Modal
                 isOpen={modalIsOpen}
