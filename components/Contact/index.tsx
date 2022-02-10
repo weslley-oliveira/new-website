@@ -291,20 +291,20 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                         </header>
                         <form>
                             {/* Name */}
-                            <p>{values.name}<span>~</span></p>
+                            <p>name<span>~</span></p>
                             <div>
                                 <span>{">"}</span>
                                 <input
                                     autoFocus
                                     name="name"
                                     type="text"
-                                    placeholder="type your name to start"
+                                    placeholder="type your name"
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}                                    
                                 />
                             </div>
                             {/* Email */}
-                            <p>{values.name}/email:<span>~</span></p>
+                            <p>email<span>~</span></p>
                             <div>
                                 <span>{">"}</span>
                                 <input
@@ -316,7 +316,7 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                                 />
                             </div>
                             
-                            <p>{values.name}/message:<span>~</span></p>
+                            <p>message<span>~</span></p>
                             <div>
                                 <span>{">"}</span>
                                 <input
@@ -326,10 +326,9 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}                                    
                                 />
-                            </div>
-                                                     
-                            <p>{values.name}/confirm?<span>~</span></p>
-                            <div>
+                            </div>                                                     
+                            <br/>
+                            <div className={styles.review}>
                                 <code>
                                     {"{"}<br />
                                     <p>name:<span>{values.name}</span></p>
@@ -339,11 +338,11 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
                                 </code>
                             </div>
                             {/* Send Message */}
-                            <p>Hi {values.name}/<span>~</span></p>
+                            <br/>
                             <div>
-                                <span>{">"} Do you want to sent it?</span>
-                               
+                                <span>{">"}do you want send it?</span>                               
                             </div>
+                            <br/>
                             <div className={styles.buttons}>
                                 <button onClick={sendMessage}>yes</button>
                                 <span>or</span>
