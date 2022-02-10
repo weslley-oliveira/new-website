@@ -18,7 +18,7 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
     const [show, setShow] = useState<String>("hidden")
     const [error, setError] = useState("")
 
-    const [display, setDisplay] = useState("")
+    const [display, setDisplay] = useState("desktop")
 
     const handleResize = () => {
         if (window.innerWidth <= 600) {
@@ -96,7 +96,9 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
             }
         }
         if (event.key === '89') {
+            
             setError("message enviada")
+
         }
     }
 
@@ -105,7 +107,8 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
         if(display === "desktop"){
             if (event.key.toLowerCase() === "y") {
-                setError("okay")
+                sendMail()
+                setError("Message sent!")
             } else if (event.key.toLowerCase() === "n") {
                 closeModal()
             } else {
@@ -119,7 +122,8 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
 
                 if (validator.isEmail(values.email.toString())) {                   
                     if(values.message.length >=10 ){
-                        setError("enviando msg")
+                        sendMail()
+                        setError("Message sent!")
                     } else {
                         setError("Your message is to short")                   
                     }
@@ -131,6 +135,27 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
             }
             
         }
+    }
+
+    function sendMail() {
+
+        try {
+            fetch('./api/sendMail', {
+              method: 'post',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                name: values.name,
+                email: values.email,
+                text: values.message,
+              }) 
+            })             
+            
+          } catch(err) {
+            console.log(err)
+          }
+
     }
    
     const initialState = {
