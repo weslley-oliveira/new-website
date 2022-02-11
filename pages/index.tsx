@@ -46,7 +46,7 @@ const Home: NextPage = () => {
     }
     setIsOpen(true) 
   }
-  console.log("diplay:",display)
+ 
   // Lottie
   const defaultOptions = {
     loop: true,

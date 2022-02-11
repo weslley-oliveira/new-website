@@ -1,13 +1,15 @@
 import Modal from 'react-modal';
 import styles from './styles.module.scss'
 
+import Draggable from 'react-draggable';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface contactProps {
     setIsOpen: (arg: boolean) => void;
@@ -60,7 +62,6 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
     }
 
     function brincadeira() {
-
 
         if(count === 0){
             toast.success('This button does nothing! haha', {
@@ -212,6 +213,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
         // send "values" to database
     }
 
+    const nodeRef = useRef(null);
     return (
         <div>
             <ToastContainer />
@@ -221,9 +223,11 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                 onRequestClose={closeModal}
                 className={styles.modal}
                 overlayClassName={styles.overlay}
-            >               
+            >             
+            <Draggable nodeRef={nodeRef}>
                     <div className={styles.container}>
-                        <header className={styles.header}>
+                    
+                        <header className={styles.header} ref={nodeRef}>
                             <div>
                                 <button onClick={closeModal} />
                                 <button onClick={brincadeira} />
@@ -232,6 +236,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                             <p>contact-me:~</p>
                             <span>{""}</span>
                         </header>
+                        
                         <form>
                             {/* Name */}
                             <p>/ <span>~</span></p>
@@ -308,6 +313,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                             <span>{error}</span>}                            
                         </form>
                     </div> 
+                    </Draggable>
             </Modal>}
             {display === "mobile" &&
                 <Modal
