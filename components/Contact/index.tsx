@@ -12,9 +12,10 @@ import { useEffect, useState } from 'react';
 interface contactProps {
     setIsOpen: (arg: boolean) => void;
     modalIsOpen: boolean;
+    display: string;
 }
 
-export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
+export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
 
     const [email, setEmail] = useState<String>("hidden")
     const [message, setMessage] = useState<String>("hidden")
@@ -31,31 +32,14 @@ export function Contact({ modalIsOpen, setIsOpen }: contactProps) {
         progress: undefined,
         });
 
-    const [display, setDisplay] = useState("desktop")
-
-    const handleResize = () => {
-        if (window.innerWidth <= 600) {
-            setDisplay("mobile")
-        } else {
-            setDisplay("desktop")
-        }
-      }
-
-    useEffect(
-        () => {            
-            window.addEventListener("resize", handleResize)                        
-        }, [modalIsOpen]
-    );
-
-    console.log("cade",display)
-
-    let delay = 2;
+    
+   
     useEffect(
         () => {
-            let timer1 = setTimeout(() => setError(""), delay * 1000);
+            let timer = setTimeout(() => setError(""), 2000);
 
             return () => {
-                clearTimeout(timer1);
+                clearTimeout(timer);
             };
         }, [error]);
     

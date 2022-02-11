@@ -35,6 +35,27 @@ const Home: NextPage = () => {
     };
   }, []);
 
+  const [display, setDisplay] = useState("")
+
+    // const handleResize = () => {
+        
+    //   }
+
+    // useEffect(
+    //     () => {            
+    //         window.addEventListener("resize", handleResize)                        
+    //     }, [modalIsOpen]
+    // );
+  function openModalDisplay(){
+
+    if (window.innerWidth <= 600) {
+      setDisplay("mobile")      
+    } else {
+      setDisplay("desktop")
+    }
+    setIsOpen(true) 
+  }
+  console.log("diplay:",display)
   // Lottie
   const defaultOptions = {
     loop: true,
@@ -55,7 +76,7 @@ const Home: NextPage = () => {
     </Head>
     <div id="root" className={styles.container}><div className={styles.home}>
       <Header />
-      <Contact modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
+      <Contact modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} display={display}/>
       <div className={styles.content}>
         <main className={styles.main}>
           <ScrollAnimation
@@ -86,7 +107,7 @@ const Home: NextPage = () => {
           >
             <div className={styles.action}>
               <button className="first">Download CV</button>
-              <button onClick={() => setIsOpen(true)}>Contact Me</button>
+              <button onClick={openModalDisplay}>Contact Me</button>
             </div>
           </ScrollAnimation>
         </main>
