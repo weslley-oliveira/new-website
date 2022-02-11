@@ -36,16 +36,7 @@ const Home: NextPage = () => {
   }, []);
 
   const [display, setDisplay] = useState("")
-
-    // const handleResize = () => {
-        
-    //   }
-
-    // useEffect(
-    //     () => {            
-    //         window.addEventListener("resize", handleResize)                        
-    //     }, [modalIsOpen]
-    // );
+  
   function openModalDisplay(){
 
     if (window.innerWidth <= 600) {
@@ -79,27 +70,15 @@ const Home: NextPage = () => {
       <Contact modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} display={display}/>
       <div className={styles.content}>
         <main className={styles.main}>
-          <ScrollAnimation
-            delay={1000}
-            animateIn="animate__fadeIn"
-            initiallyVisible={true}
-            animateOnce={true}
-          >
+          
             <h1 className={styles.title}>
               Hi, I am a problem solver.
             </h1>
-          </ScrollAnimation>
-          <ScrollAnimation
-            delay={1300}
-            animateIn="animate__fadeIn"
-            initiallyVisible={true}
-            animateOnce={true}
-          >
+          
             <p>
               Front-end Web Developer, technology and programming.
             </p>
-          </ScrollAnimation>
-
+         
           <ScrollAnimation
             delay={1000}
             animateIn="animate__fadeIn"

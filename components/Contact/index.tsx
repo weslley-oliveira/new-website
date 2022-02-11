@@ -22,6 +22,8 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
     const [show, setShow] = useState<String>("hidden")
     const [error, setError] = useState("")
 
+    const [count, setCount] = useState(0);
+
     const notify = () => toast.success('Your message has been sent! Thank you for contact me!', {
         position: "top-right",
         autoClose: 5000,
@@ -55,6 +57,37 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
         setMessage("hidden")
         setShow("hidden")
         setError("")
+    }
+
+    function brincadeira() {
+
+
+        if(count === 0){
+            toast.success('This button does nothing! haha', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            setCount(count + 1)
+        }else{
+            toast.warning('Sorry me too! haha', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            setCount(0)
+        }
+        
+        
+
     }
 
     function handleNextLine(event: any) {
@@ -193,8 +226,8 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                         <header className={styles.header}>
                             <div>
                                 <button onClick={closeModal} />
-                                <button onClick={closeModal} />
-                                <button onClick={() => setEmail("hidden")} />
+                                <button onClick={brincadeira} />
+                                <button onClick={brincadeira} />
                             </div>
                             <p>contact-me:~</p>
                             <span>{""}</span>
@@ -287,8 +320,8 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                         <header className={styles.header}>
                             <div>
                                 <button onClick={closeModal} />
-                                <button onClick={closeModal} />
-                                <button onClick={() => setEmail("hidden")} />
+                                <button onClick={brincadeira} />
+                                <button onClick={brincadeira} />
                             </div>
                             <p>contact-me:~</p>
                             <span>{""}</span>
