@@ -32,10 +32,18 @@
                 height: 15px;
                 margin: 0;
                 padding:0;
-                background-color: red;
+                background-color: #FC5653;
 
                 border: none;
-                border-radius: 100%;
+                border-radius: 100%;                
+            }
+
+            button:nth-last-of-type(2){
+                background-color: #FDBC40;
+            }
+
+            button:nth-last-of-type(1) {
+                background-color: #33C748;
             }
         }
     }
@@ -154,8 +162,7 @@
                     width: 20px;
                     height: 20px;
                     margin: 0;
-                    padding:0;
-                    background-color: red;
+                    padding:0;                   
     
                     border: none;
                     border-radius: 100%;
