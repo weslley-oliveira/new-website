@@ -76,7 +76,7 @@ const Home: NextPage = () => {
             </h1>
           
             <p>
-              Front-end Web Developer, technology and programming.
+              Front End Web Developer, ReactJs, Typescript and Nextjs.
             </p>
          
           <ScrollAnimation
