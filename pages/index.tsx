@@ -85,7 +85,9 @@ const Home: NextPage = () => {
             animateOnce={true}
           >
             <div className={styles.action}>
-              <button className="first">Download CV</button>
+             
+              <button><a href="/cv.pdf" download>Download CV</a></button>
+              
               <button onClick={openModalDisplay}>Contact Me</button>
             </div>
           </ScrollAnimation>
