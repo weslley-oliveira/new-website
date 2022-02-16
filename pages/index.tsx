@@ -68,10 +68,11 @@ const Home: NextPage = () => {
           name="description"
           content="Hi, I am a problem solver. Front End Web Developer, ReactJs, Typescript and Nextjs."
         />
-        <meta
-          property="og:image"
-          content="/profile.jpg"
-        />
+        <meta property="og:image" content="https://www.weslleyoliveira.com/profile.jpg" />
+        <meta property="og:image:secure_url" content="https://www.weslleyoliveira.com/profile.jpg" /> 
+        <meta property="og:image:type" content="image/jpeg" /> 
+        <meta property="og:image:width" content="400" /> 
+        <meta property="og:image:height" content="400" />
         <meta name="og:title" content="Weslley Oliveira" />
         <meta name="twitter:card" content="summary_large_image" />
         
