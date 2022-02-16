@@ -27,7 +27,7 @@ const About: NextPage = () => {
           <p className={styles.description}>
           I started my career repairing electronic equipment at the Methodist University of São Paulo, 
           then I was promoted to the information technology department, working with technical support, 
-          completing my Bachelor's degree in Computer Engineering in 2013, 
+          completing my Bachelor&apos;s degree in Computer Engineering in 2013, 
           I said goodbye to this university for which I am very grateful and 
           I went on an adventure through Brazil working with industrial automation, 
           programming smart scales for weighing soybeans across the country.
@@ -55,15 +55,15 @@ const About: NextPage = () => {
           My dream is to develop an application that can impact many people, 
           I believe that with digital inclusion on the rise and through my code, 
           I will be able to transform many lives, I try to practice a little programming every day, 
-          studying software development, keeping myself updated, I'm sure this will lead me to the realisation of my dream.
+          studying software development, keeping myself updated, I&apos;m sure this will lead me to the realisation of my dream.
           </p>
           </ScrollAnimation>
         <ScrollAnimation animateIn="animate__bounceInRight">
 
           <p className={styles.description}>
           Improving my focus is my daily struggle. Software that uses neuroscience and complex resources have been increased, 
-          they easily get our attention. It's been hard work to be focused amidst the war of who gets my attention, 
-          but through personal development and meditation, I've become a person a lot more focused on my job.
+          they easily get our attention. It&apos;s been hard work to be focused amidst the war of who gets my attention, 
+          but through personal development and meditation, I&apos;ve become a person a lot more focused on my job.
           </p>
           </ScrollAnimation>
        
