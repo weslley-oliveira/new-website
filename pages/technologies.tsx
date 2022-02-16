@@ -12,19 +12,19 @@ const Technologies: NextPage = () => {
   return (
     <div className={styles.container} id="technologies">
       <main className={styles.main}>
-          <ScrollAnimation delay={500} animateIn="animate__fadeInUp">
+          <ScrollAnimation animateIn="animate__fadeInUp">
            <RiReactjsFill/>
           </ScrollAnimation>
-          <ScrollAnimation delay={700} animateIn="animate__fadeInUp">
+          <ScrollAnimation delay={300} animateIn="animate__fadeInUp">
             <RiHtml5Fill/>
           </ScrollAnimation>
-          <ScrollAnimation delay={900} animateIn="animate__fadeInUp">
+          <ScrollAnimation delay={600} animateIn="animate__fadeInUp">
             <SiTypescript/>
           </ScrollAnimation>
-          <ScrollAnimation delay={1100} animateIn="animate__fadeInUp">
+          <ScrollAnimation delay={900} animateIn="animate__fadeInUp">
             <SiNextdotjs/>
           </ScrollAnimation>
-          <ScrollAnimation delay={1300} animateIn="animate__fadeInUp">
+          <ScrollAnimation delay={1200} animateIn="animate__fadeInUp">
             <SiTailwindcss/>
           </ScrollAnimation>
           <ScrollAnimation delay={1500} animateIn="animate__fadeInUp">

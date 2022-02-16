@@ -9,7 +9,7 @@ const About: NextPage = () => {
   return (
     <>
     <div className={styles.container} id="about">
-      <main className={styles.main}>        
+      <main className={`${styles.main}`}>        
      
         <ScrollAnimation animateIn="animate__fadeInUpBig">
           <h1 className={styles.title}>
@@ -17,15 +17,56 @@ const About: NextPage = () => {
           </h1>
         </ScrollAnimation>        
 
-        <ScrollAnimation animateIn="animate__fadeInUp">
-          <p className={styles.description}>          
-            Hi, my name is Weslley Oliveira I&apos;m a software engineer.
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident
+        <ScrollAnimation animateIn="animate__bounceInLeft">
+          <p className={styles.description}>
+            My name is Weslley Oliveira, I&apos;m passionate about human-machine interaction, 
+            being able to create these interactions is my job and also a hobby.
           </p>
         </ScrollAnimation>
+        <ScrollAnimation animateIn="animate__bounceInRight">
+          <p className={styles.description}>
+          I started my career repairing electronic equipment at the Methodist University of São Paulo, 
+          then I was promoted to the information technology department, working with technical support, 
+          completing my Bachelor's degree in Computer Engineering in 2013, 
+          I said goodbye to this university for which I am very grateful and 
+          I went on an adventure through Brazil working with industrial automation, 
+          programming smart scales for weighing soybeans across the country.
+          </p>
+          </ScrollAnimation>
+        <ScrollAnimation animateIn="animate__bounceInLeft">
+
+          <p className={styles.description}>
+          Taken by the adventurous spirit, I moved to England and in the process of learning English I took a chance on the most diverse jobs,
+          kitchen porter, courier, fitter furniture and finally, returning to my technological career,
+          working remotely as a Front End Developer.
+          </p>
+          </ScrollAnimation>
+        <ScrollAnimation animateIn="animate__bounceInRight">
+
+          <p className={styles.description}>
+          Travelling has become my passion, I love my job in parts because my current career has given me that, 
+          a highlight for this passion and getting to know other cultures and places, 
+          it gives me a better way of thinking and being more creative, very important for the realisation of my dream.
+          </p>
+          </ScrollAnimation>
+        <ScrollAnimation animateIn="animate__bounceInLeft">
+
+          <p className={styles.description}>
+          My dream is to develop an application that can impact many people, 
+          I believe that with digital inclusion on the rise and through my code, 
+          I will be able to transform many lives, I try to practice a little programming every day, 
+          studying software development, keeping myself updated, I'm sure this will lead me to the realisation of my dream.
+          </p>
+          </ScrollAnimation>
+        <ScrollAnimation animateIn="animate__bounceInRight">
+
+          <p className={styles.description}>
+          Improving my focus is my daily struggle. Software that uses neuroscience and complex resources have been increased, 
+          they easily get our attention. It's been hard work to be focused amidst the war of who gets my attention, 
+          but through personal development and meditation, I've become a person a lot more focused on my job.
+          </p>
+          </ScrollAnimation>
+       
         
         <div className={styles.social}>
           <ScrollAnimation animateIn="animate__fadeInBottomLeft">
