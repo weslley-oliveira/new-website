@@ -86,7 +86,7 @@ const Home: NextPage = () => {
           >
             <div className={styles.action}>
              
-              <button><a href="/cv.pdf" download>Download CV</a></button>
+              <button><a href="/weslley-oliveira-cv.pdf" download>Download CV</a></button>
               
               <button onClick={openModalDisplay}>Contact Me</button>
             </div>
