@@ -150,7 +150,7 @@
 
 @media (max-width: 640px) {
   .home{
-    padding: 1.5rem 1rem 0;
+    padding: calc(5.5rem + env(safe-area-inset-top)) 1rem 0;
   }
   .animation{
     display: block;

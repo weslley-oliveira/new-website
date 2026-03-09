@@ -331,7 +331,7 @@
 
 @media (max-width: 640px) {
   .container {
-    padding: 0 1rem;
+    padding: calc(5.5rem + env(safe-area-inset-top)) 1rem 0;
   }
 
   .main {

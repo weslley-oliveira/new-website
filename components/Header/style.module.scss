@@ -50,19 +50,32 @@
 }
 
 @media (max-width: 640px) {
-     
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: max(0.75rem, env(safe-area-inset-top)) 1rem 0.85rem;
+    background: rgba(18, 18, 20, 0.78);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    z-index: 5;
+  }
+
   .menuBars{
     display: block;
     cursor: pointer;
     background-color: var(--contrast);
     border: 0;
     padding: 2px;
-    border-radius: 0.25rem;
-    transition: 0.3s;
-    z-index: 4;
-    position: fixed;
-    right: 1rem;
-    top: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    z-index: 6;
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-left: auto;
 
     div {
         width: 27.2px;
@@ -79,7 +92,7 @@
   }
 
   .fixed{    
-    opacity: 0.75;
+    opacity: 1;
   }
 
   .active{ 

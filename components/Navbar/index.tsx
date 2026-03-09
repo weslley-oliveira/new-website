@@ -25,6 +25,7 @@ interface NavigationItem {
 export function Navbar({ button, setIsToggled }: buttonProps) {
    const router = useRouter();
    const isHomePage = router.pathname === '/';
+   const titleHref = isHomePage ? '#home' : '/';
    const sectionItems = [
     { id: 'home', label: 'Home', icon: BiHomeAlt },
     { id: 'about', label: 'Who Am I', icon: BsFillPersonLinesFill },
@@ -88,6 +89,11 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
                 onClick={closeMenu}
             />
             <div id="primary-navigation" className={`${style.listMenu} ${isToggled ? style.active : ''}`}>
+                <a href={titleHref} className={style.menuBrand} onClick={closeMenu}>
+                    <span>{'<'}</span>
+                    Oliveira
+                    <span>{'/>'}</span>
+                </a>
                 <ul>
                     {navigationItems.map(({ id, label, href, icon: Icon, isActive }) => (
                         <li key={id}>
