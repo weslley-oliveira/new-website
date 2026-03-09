@@ -1,4 +1,10 @@
+.backdrop {
+  display: none;
+}
+
 .listMenu{
+    display: flex;
+    align-items: center;
 
     ul{
       
@@ -7,32 +13,71 @@
       font-size: 1.15rem;
       justify-content: space-between;
       gap: 1rem;
+      margin: 0;
+      padding: 0;
       
       li{ 
-          cursor: pointer;
-          padding-left: 1rem;
+          padding-left: 0;
 
           span{
             display: none;
           }
       }
-
-      li:hover{
-        color: var(--contrast);
-        transition: 0.3s;
-      }
     }
 }
 
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  color: rgba(225, 225, 230, 0.78);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--primary);
+  background-color: rgba(130, 87, 230, 0.16);
+  transform: translateY(-1px);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--highlight);
+  outline-offset: 3px;
+}
+
+.activeLink {
+  color: var(--primary);
+  background-color: rgba(130, 87, 230, 0.24);
+  box-shadow: 0 0 0 1px rgba(130, 87, 230, 0.25);
+}
 
 @media (max-width: 640px) {
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    border: 0;
+    background: rgba(18, 18, 20, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+  }
+
+  .backdropVisible {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
   
   .listMenu {   
     
     position: fixed;
     top: 0;
     right: 0;
-    width: 80vw;
+    width: min(84vw, 22rem);
     height: 100%;
     
     color: white;
@@ -55,35 +100,40 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-evenly;
+      padding-left: 2rem;
       
       li {        
         margin-left: 0;
         opacity: 1;
-        
-        
-        a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: space-between;
-          text-shadow: 2px 2px rgba(0, 0, 0, 0.10);
-    
-          span {    
-            display: block;  
-            font-size: 2rem;
-            margin-top: 0.50rem;
-            padding-right: 1.5rem;
-            color: var(--highlight)
-            
-          }
-        }
-        :hover{
-          color: var(--highlight);
-          transition: 0.3s;
-        }
-        
       }
     }
     
+  }
+
+  .navLink {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    justify-content: flex-start;
+    color: white;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.10);
+
+    span {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--highlight);
+    }
+  }
+
+  .navLink:hover,
+  .navLink:focus-visible {
+    background-color: rgba(4, 211, 97, 0.12);
+    color: var(--highlight);
+  }
+
+  .activeLink {
+    color: var(--highlight);
+    background-color: rgba(18, 18, 20, 0.22);
+    box-shadow: none;
   }
     
     

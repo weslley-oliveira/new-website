@@ -34,30 +34,12 @@
   }
 
   .action {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
 
-    
-
-    button:last-child{
-      background-color: var(--bg);
-      color: white;
-      margin-left: 1rem;      
-    }
-    button{
-      color: white;
-
-      padding: 1rem;
-      margin: 2rem 0;
-      background: var(--highlight);
-      border-radius: 1px;
-      border: solid var(--highlight) 1px;
-    
-      font-size: 1.25rem;
-      width: 15rem;      
-
-      transition: 0.2s;
-    }
-
-    button:hover {
+    button:hover,
+    a:hover {
       transform: scale(1.04);
     }
 
@@ -73,6 +55,7 @@
   img {    
     width: 300px;
     height: 300px;
+    object-fit: contain;
 
     border-radius: 100%;
   }
@@ -81,6 +64,54 @@
 .animation{
   display: none;
 }
+
+.animationLink {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 999px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.animationLink:hover {
+  transform: translateY(4px);
+}
+
+.animationLink:focus-visible {
+  outline: 2px solid var(--highlight);
+  outline-offset: 4px;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 1rem;
+  background: var(--highlight);
+  border-radius: 1px;
+  border: solid var(--highlight) 1px;
+  font-size: 1.25rem;
+  width: 15rem;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.secondaryButton {
+  background-color: var(--bg);
+  color: white;
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid var(--contrast);
+  outline-offset: 3px;
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus-visible {
+  border-color: var(--contrast);
+  background-color: rgba(130, 87, 230, 0.18);
+}
+
 .shapeDivider {  
   background-color: var(--bg);
   width: 100%;
@@ -154,13 +185,12 @@
     
   }
   .action{
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
     justify-content: center;
     align-items: center;
 
-    button{
+    button,
+    a{
       width: 100%;
       
       padding: 1rem;
@@ -168,9 +198,15 @@
       border-radius: 1px;
   
       font-size: 1.25rem;
-      margin: 0 2rem;      
+      margin: 0 2rem;    
     }
-    button:last-child{
+
+    .secondaryButton{
+      background: var(--bg);
+    }
+
+    button:last-child,
+    a:last-child{
       margin: 0;
     }
   }
@@ -188,6 +224,7 @@
       
       width: 174.38px;
       height: 180px;
+      object-fit: contain;
   
       border-radius: 100%;
   

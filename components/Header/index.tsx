@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { Navbar } from '../Navbar'
 import styles from './style.module.scss'
 
-import { animateScroll } from 'react-scroll'
-
-
 export function Header() {
     const Title = "Oliveira"
+    const router = useRouter()
 
     const [isToggled, setIsToggled] = useState<boolean>(false)
 
@@ -23,20 +22,28 @@ export function Header() {
         };
     }, []);
 
+    const titleHref = router.pathname === '/' ? '#home' : '/'
+
     return (
         
-        <header className={styles.header}>
+        <header className={`${styles.header} ${scrollPosition >= 1 ? styles.scrolled : ''}`}>
             <div className={styles.title}>
-                <h2> {"<"}{Title}<span>{"/>"}</span> </h2>
+                <a href={titleHref} className={styles.titleLink}>
+                    <h2> {"<"}{Title}<span>{"/>"}</span> </h2>
+                </a>
             </div>
-            <div
+            <button
+                type="button"
+                aria-label={isToggled ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={isToggled}
+                aria-controls="primary-navigation"
                 onClick={()=>setIsToggled(!isToggled)} 
                 className={`${styles.menuBars} ${scrollPosition >=1 && styles.fixed}  ${isToggled?styles.active:''}`}>
                     
                 <div className={styles.line1}></div>
                 <div className={styles.line2}></div>
                 <div className={styles.line3}></div>
-            </div>   
+            </button>   
             <Navbar button={isToggled} setIsToggled={setIsToggled}/>        
         </header>
     )

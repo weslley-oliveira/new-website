@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-scroll'
 
 import styles from '../styles/Home.module.scss'
 
@@ -12,9 +11,9 @@ import Technologies from './technologies'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Contact } from '../components/Contact'
+import { Reveal } from '../components/Reveal'
 
-import Lottie from 'react-lottie'
-import ScrollAnimation from 'react-animate-on-scroll';
+import Lottie from 'lottie-react'
 
 import animationData from '../lotties/downAnimation.json'
 
@@ -47,16 +46,6 @@ const Home: NextPage = () => {
     setIsOpen(true) 
   }
  
-  // Lottie
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
   return (<>
     <Head>
       <title>Dev Oliveira</title>
@@ -77,7 +66,7 @@ const Home: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         
     </Head>
-    <div id="root" className={styles.container}><div className={styles.home}>
+    <div id="root" className={styles.container}><div id="home" className={styles.home}>
       <Header />
       <Contact modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} display={display}/>
       <div className={styles.content}>
@@ -91,38 +80,43 @@ const Home: NextPage = () => {
               Front End Web Developer, ReactJs, Typescript and Nextjs.
             </p>
          
-          <ScrollAnimation
+          <Reveal
             delay={1000}
             animateIn="animate__fadeIn"
             animateOnce={true}
           >
             <div className={styles.action}>
              
-              <button><a href="/weslley-oliveira-cv.pdf" download>Download CV</a></button>
+              <a className={styles.actionButton} href="/weslley-oliveira-cv.pdf" download>Download CV</a>
               
-              <button onClick={openModalDisplay}>Contact Me</button>
+              <button className={`${styles.actionButton} ${styles.secondaryButton}`} onClick={openModalDisplay}>Contact Me</button>
             </div>
-          </ScrollAnimation>
+          </Reveal>
         </main>
         <section className={styles.section}>
-          <ScrollAnimation
+          <Reveal
             delay={200}
             animateIn="animate__flipInX"
           >
-            <img src="/profile.jpg" alt="Weslley Oliveira" />
-          </ScrollAnimation>
+            <img src="/hero-profile.png" alt="Weslley Oliveira" />
+          </Reveal>
         </section>
       </div>
 
-      <Link activeClass="active" to="about" spy={true} smooth={true} offset={0} duration={1000} >
-        <div className={`${styles.animation} ${scrollPosition >= 100 && styles.hide}`}>
+      <a
+        href="#about"
+        aria-label="Scroll to About section"
+        className={`${styles.animationLink} ${scrollPosition >= 100 ? styles.hide : ''}`}
+      >
+        <div className={styles.animation}>
           <Lottie
-            options={defaultOptions}
-            height={60}
-            width={60}
+            animationData={animationData}
+            loop={true}
+            autoplay={true}
+            style={{ height: 60, width: 60 }}
           />
         </div>
-      </Link>
+      </a>
 
 
     </div>
