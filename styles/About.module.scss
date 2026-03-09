@@ -1,102 +1,221 @@
 .container {
-  background-color: var(--contrast);  
-  scroll-margin-top: 96px;
-
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-
-  padding: 1.5rem 1rem 0;
-
-  position: relative;  
-
+  padding: 4.5rem 1rem 0;
   border-bottom: solid 50px var(--bg);
-
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 45%),
+    linear-gradient(180deg, rgba(130, 87, 230, 0.98) 0%, rgba(102, 68, 191, 1) 100%);
+  scroll-margin-top: 96px;
 }
 
 .main {
-  max-width: 800px;  
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-
-  h1{
-    
-    text-align: center;
-    font-size: 4rem;
-    max-width: 200px;
-  }
-
-  p {
-    text-align: left;
-  }
-
-  .social{
-    padding: 3rem 0;
-    display: flex;
-
-    margin-bottom: 5rem;
-        
-    gap: 2rem;
-    font-size: 1.75rem;
-   
-    a{
-
-      width: 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      transition: 0.5s;
-      
-      gap: .5rem;
-      span {
-        font-size: 0.7rem;
-      }
-    }
-
-    a:hover{
-      transform: scale(1.2)
-    }
-    
-    
-  }
-
+  width: min(100%, 1080px);
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 5rem;
 }
 
+.hero,
+.storyCard,
+.socialPanel {
+  border: 1px solid rgba(225, 225, 230, 0.16);
+  background: rgba(18, 18, 20, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
 
-// divider
+.hero {
+  padding: 2rem;
+  border-radius: 1.5rem;
+}
+
+.eyebrow,
+.cardEyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--highlight);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.title {
+  margin: 0;
+  max-width: 9ch;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  line-height: 0.95;
+
+  span {
+    color: var(--highlight);
+  }
+}
+
+.lead {
+  max-width: 62ch;
+  margin: 1.25rem 0 0;
+  color: rgba(225, 225, 230, 0.88);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.storyCard {
+  display: grid;
+  gap: 1rem;
+  min-height: 100%;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+}
+
+.cardContent {
+  display: grid;
+  gap: 1rem;
+
+  p {
+    margin: 0;
+    color: rgba(225, 225, 230, 0.8);
+    line-height: 1.75;
+  }
+}
+
+.socialPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+}
+
+.socialIntro {
+  p:last-child {
+    margin: 1rem 0 0;
+    color: rgba(225, 225, 230, 0.8);
+    line-height: 1.7;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+}
+
+.socialList {
+  display: grid;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(225, 225, 230, 0.12);
+  border-radius: 1rem;
+  background: rgba(18, 18, 20, 0.22);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(4, 211, 97, 0.45);
+  background: rgba(18, 18, 20, 0.32);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid var(--highlight);
+  outline-offset: 3px;
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.95rem;
+  background: rgba(225, 225, 230, 0.08);
+  font-size: 1.25rem;
+}
+
+.socialText {
+  display: grid;
+  gap: 0.25rem;
+
+  strong {
+    font-size: 1rem;
+  }
+
+  span {
+    color: rgba(225, 225, 230, 0.72);
+    font-size: 0.9rem;
+  }
+}
 
 .dividerAbout {
-  position:absolute;
+  position: absolute;
   bottom: -1px;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
- 
+
   svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 50px;
   }
+
   .shapeFill {
     fill: var(--bg);
   }
 }
 
+@media (max-width: 900px) {
+  .storyGrid,
+  .socialPanel {
+    grid-template-columns: 1fr;
+  }
+}
 
-@media (min-width: 640px) {
- .social{
-  justify-content: space-between;
-      align-content: center;
- }
+@media (max-width: 640px) {
+  .container {
+    padding: 3rem 1rem 0;
+  }
 
- .container{
-   padding: 0;
- }
+  .main {
+    gap: 1.25rem;
+    margin-bottom: 4rem;
+  }
+
+  .hero,
+  .storyCard,
+  .socialPanel {
+    padding: 1.25rem;
+  }
+
+  .socialLink {
+    min-height: auto;
+  }
 }
