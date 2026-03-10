@@ -174,7 +174,7 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
                         </li>
                     ))}
                     {authUser && (
-                        <li key="profile">
+                        <li key="profile" className={style.userMenuDesktop}>
                             <div className={style.userMenuWrapper} ref={userMenuRef}>
                                 <button
                                     type="button"
@@ -219,6 +219,38 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
                         </li>
                     )}
                 </ul>
+                {authUser && (
+                    <div className={style.mobileUserCard}>
+                        <div className={style.mobileUserCardAvatar}>
+                            {getUserAvatarUrl(authUser) ? (
+                                <img
+                                    src={getUserAvatarUrl(authUser)!}
+                                    alt=""
+                                    className={style.mobileUserAvatar}
+                                    width={64}
+                                    height={64}
+                                />
+                            ) : (
+                                <span className={style.mobileUserAvatarFallback}>
+                                    {getUserDisplayName(authUser).slice(0, 2).toUpperCase()}
+                                </span>
+                            )}
+                        </div>
+                        <p className={style.mobileUserCardName}>{getUserDisplayName(authUser)}</p>
+                        <p className={style.mobileUserCardEmail}>{authUser.email ?? ''}</p>
+                        <button
+                            type="button"
+                            className={style.mobileUserCardSignOut}
+                            onClick={() => {
+                                closeMenu();
+                                void handleSignOut();
+                            }}
+                            disabled={isSigningOut}
+                        >
+                            {isSigningOut ? 'Signing out...' : 'Sign out'}
+                        </button>
+                    </div>
+                )}
             </div>                        
         </nav>
     )

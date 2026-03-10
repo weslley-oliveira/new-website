@@ -58,6 +58,14 @@
   box-shadow: 0 0 0 1px rgba(130, 87, 230, 0.25);
 }
 
+.userMenuDesktop {
+  display: block;
+}
+
+.mobileUserCard {
+  display: none;
+}
+
 .userMenuWrapper {
   position: relative;
 }
@@ -266,10 +274,90 @@
     background-color: rgba(18, 18, 20, 0.22);
     box-shadow: none;
   }
-    
-    
+
+  .userMenuDesktop {
+    display: none;
   }
-  
+
+  .mobileUserCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .mobileUserCardAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(4, 211, 97, 0.2);
+  }
+
+  .mobileUserAvatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mobileUserAvatarFallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--highlight);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .mobileUserCardName {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+  }
+
+  .mobileUserCardEmail {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    word-break: break-all;
+    text-align: center;
+  }
+
+  .mobileUserCardSignOut {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 0.75rem;
+    background: rgba(18, 18, 20, 0.4);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: rgba(18, 18, 20, 0.6);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
   .active {
     visibility: visible;
     transform: translateX(0);
@@ -285,3 +373,4 @@
       transform: translateX(0);
     }
   }
+}
