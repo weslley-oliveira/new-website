@@ -50,19 +50,22 @@ const Home: NextPage = () => {
   return (<>
     <Head>
       <title>Dev Oliveira</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></meta>
-      <meta name="description" content={t('home.metaDescription')} />
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+      <meta name="description" content="Desenvolvedor Front End | React, TypeScript, Next.js. Conheça meu trabalho!" />
       <meta charSet="UTF-8" />
-      <link rel="icon" href="/favicon.ico" />      
-      <meta name="description" content={t('home.metaDescription')} />
-        <meta property="og:image" content="https://www.weslleyoliveira.com/profile.jpg" />
-        <meta property="og:image:secure_url" content="https://www.weslleyoliveira.com/profile.jpg" /> 
-        <meta property="og:image:type" content="image/jpeg" /> 
-        <meta property="og:image:width" content="400" /> 
-        <meta property="og:image:height" content="400" />
-        <meta name="og:title" content="Weslley Oliveira" />
-        <meta name="twitter:card" content="summary_large_image" />
-        
+      <link rel="icon" href="/favicon.ico" />
+      <meta property="og:title" content="Weslley Oliveira" />
+      <meta property="og:description" content="Desenvolvedor Front End | React, TypeScript, Next.js. Conheça meu trabalho!" />
+      <meta property="og:url" content="https://www.weslleyoliveira.com/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="https://www.weslleyoliveira.com/profile.jpg" />
+      <meta property="og:image:secure_url" content="https://www.weslleyoliveira.com/profile.jpg" />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:width" content="400" />
+      <meta property="og:image:height" content="400" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Weslley Oliveira" />
+      <meta name="twitter:description" content="Desenvolvedor Front End | React, TypeScript, Next.js. Conheça meu trabalho!" />
     </Head>
     <div id="root" className={styles.container}><div id="home" className={styles.home}>
       <Header />
