@@ -9,7 +9,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm';
-import { useEffect, useRef, useState } from 'react';
+import {
+    useEffect,
+    useRef,
+    useState,
+    type ComponentType,
+    type KeyboardEvent as ReactKeyboardEvent,
+    type MouseEvent as ReactMouseEvent,
+    type ReactNode,
+    type RefObject,
+} from 'react';
 
 interface contactProps {
     setIsOpen: (arg: boolean) => void;
@@ -18,15 +27,30 @@ interface contactProps {
 }
 
 export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
+    const DraggableContainer = Draggable as unknown as ComponentType<{
+        children: ReactNode;
+        nodeRef?: RefObject<HTMLElement>;
+    }>;
 
-    const [email, setEmail] = useState<String>("hidden")
-    const [message, setMessage] = useState<String>("hidden")
-    const [show, setShow] = useState<String>("hidden")
+    const [email, setEmail] = useState<string>("hidden")
+    const [message, setMessage] = useState<string>("hidden")
+    const [show, setShow] = useState<string>("hidden")
     const [error, setError] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const [count, setCount] = useState(0);
 
-    const notify = () => toast.success('Your message has been sent! Thank you for contact me!', {
+    const notifySuccess = () => toast.success('Your message has been sent successfully.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
+    const notifyError = (message: string) => toast.error(message, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -61,7 +85,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
         setError("")
     }
 
-    function brincadeira() {
+    function handleEasterEgg() {
 
         if(count === 0){
             toast.success('This button does nothing! haha', {
@@ -91,64 +115,103 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
 
     }
 
-    function handleNextLine(event: any) {
+    function handleNextLine(event: ReactKeyboardEvent<HTMLInputElement>) {
         if (event.key.toLowerCase() === 'enter') {
-            const form = event.target.form;
-            const index = [...form].indexOf(event.target);
+            const input = event.currentTarget;
+            const form = input.form;
+
+            if (!form) {
+                return;
+            }
+
+            const formElements = Array.from(form.elements);
+            const index = formElements.indexOf(input);
 
             if (index <= 0) {
+                const nextInput = formElements[index + 1];
 
                 if(values.name.length >= 2){
-                form.elements[index + 1].focus();
+                if (nextInput instanceof HTMLElement) {
+                    nextInput.focus();
+                }
                 setEmail("visible")
                 }else {
-                    setError("Plese I need your name")
+                    setError("Please tell me your name.")
                 }            
 
             } else if (index <= 1) {
+                const nextInput = formElements[index + 1];
 
                 if (validator.isEmail(values.email.toString())) {
-                    form.elements[index + 1].focus();
+                    if (nextInput instanceof HTMLElement) {
+                        nextInput.focus();
+                    }
                     setMessage("visible")
                 } else {
-                    setError('Enter valid Email!')
+                    setError('Please enter a valid email address.')
                 }
 
             } else if (index <= 2) {
+                const nextInput = formElements[index + 1];
 
                 if (values.message.length >= 20) {
-                    form.elements[index + 1].focus();
+                    if (nextInput instanceof HTMLElement) {
+                        nextInput.focus();
+                    }
                     setShow("message")
                     setMessage("men")
                 } else {
-                    setError("Your message is to short")
+                    setError("Your message is too short.")
                 }
 
 
             } else {
 
-                setError("please leave your message")
+                setError("Please leave your message.")
             }
-        }
-        if (event.key === '89') {
-            
-            setError("message enviada")
-
         }
     }
 
-    function sendMessage(event: any) {
+    async function submitContactMessage() {
+        if (isSubmitting) {
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            await sendMail()
+            notifySuccess()
+            delayCloseModal()
+        } catch (err) {
+            const message =
+                err instanceof Error
+                    ? err.message
+                    : 'Could not send your message. Please try again.';
+
+            setError(message)
+            notifyError(message)
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
+    async function sendMessage(
+        event: ReactKeyboardEvent<HTMLInputElement> | ReactMouseEvent<HTMLButtonElement>
+    ) {
         event.preventDefault();
 
         if(display === "desktop"){
+            if (!('key' in event)) {
+                return;
+            }
+
             if (event.key.toLowerCase() === "y") {
-                sendMail()                               
-                notify()
-                delayCloseModal()
+                await submitContactMessage()
             } else if (event.key.toLowerCase() === "n") {
                 closeModal()
             } else {
-                setError("please press Y or N")
+                setError("Please press Y or N.")
             }
         }
 
@@ -158,41 +221,38 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
 
                 if (validator.isEmail(values.email.toString())) {                   
                     if(values.message.length >=10 ){
-                        sendMail()                               
-                        notify()
-                        delayCloseModal()
+                        await submitContactMessage()
                     } else {
-                        setError("Your message is to short")                   
+                        setError("Your message is too short.")                   
                     }
                 } else {
-                    setError('Enter valid email!')
+                    setError('Please enter a valid email address.')
                 }                
             } else {
-                setError("Please inform your name")
+                setError("Please tell me your name.")
             }
             
         }
     }
 
-    function sendMail() {
-
-        try {
-            fetch('./api/sendMail', {
-              method: 'post',
-              headers: {
+    async function sendMail() {
+        const response = await fetch('/api/sendMail', {
+            method: 'POST',
+            headers: {
                 'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
+            },
+            body: JSON.stringify({
                 name: values.name,
                 email: values.email,
                 text: values.message,
-              }) 
-            })             
-            
-          } catch(err) {
-            console.log(err)
-          }
+            })
+        })
 
+        const responseData = await response.json().catch(() => null)
+
+        if (!response.ok) {
+            throw new Error(responseData?.message ?? 'Could not send your message. Please try again.')
+        }
     }
    
     const initialState = {
@@ -213,7 +273,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
         // send "values" to database
     }
 
-    const nodeRef = useRef(null);
+    const nodeRef = useRef<HTMLElement>(null);
     return (
         <div>
             <ToastContainer />
@@ -224,14 +284,14 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                 className={styles.modal}
                 overlayClassName={styles.overlay}
             >             
-            <Draggable nodeRef={nodeRef}>
+            <DraggableContainer nodeRef={nodeRef}>
                     <div className={styles.container}>
                     
                         <header className={styles.header} ref={nodeRef}>
                             <div>
-                                <button onClick={closeModal} />
-                                <button onClick={brincadeira} />
-                                <button onClick={brincadeira} />
+                                <button type="button" onClick={closeModal} />
+                                <button type="button" onClick={handleEasterEgg} />
+                                <button type="button" onClick={handleEasterEgg} />
                             </div>
                             <p>contact-me:~</p>
                             <span>{""}</span>
@@ -304,7 +364,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                     className={`${show !== 'message' && styles.hidden}`}
                                     placeholder=""
                                     readOnly
-                                    value="do you want to send it? press Y or N"
+                                    value={isSubmitting ? "sending your message..." : "do you want to send it? press Y or N"}
                                     onKeyPress={sendMessage}
                                     required
                                 />
@@ -313,7 +373,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                             <span>{error}</span>}                            
                         </form>
                     </div> 
-                    </Draggable>
+                    </DraggableContainer>
             </Modal>}
             {display === "mobile" &&
                 <Modal
@@ -325,9 +385,9 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                     <div className={styles.container}>
                         <header className={styles.header}>
                             <div>
-                                <button onClick={closeModal} />
-                                <button onClick={brincadeira} />
-                                <button onClick={brincadeira} />
+                                <button type="button" onClick={closeModal} />
+                                <button type="button" onClick={handleEasterEgg} />
+                                <button type="button" onClick={handleEasterEgg} />
                             </div>
                             <p>contact-me:~</p>
                             <span>{""}</span>
@@ -383,13 +443,15 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                             {/* Send Message */}
                             <br/>
                             <div>
-                                <span>{">"}do you want send it?</span>                               
+                                <span>{">"}do you want to send it?</span>                               
                             </div>
                             <br/>
                             <div className={styles.buttons}>
-                                <button onClick={sendMessage}>yes</button>
+                                <button type="button" onClick={sendMessage} disabled={isSubmitting}>
+                                    {isSubmitting ? 'sending...' : 'yes'}
+                                </button>
                                 <span>or</span>
-                                <button onClick={closeModal}>not</button>
+                                <button type="button" onClick={closeModal} disabled={isSubmitting}>not</button>
                             </div>
                             <span>{error}</span>                                                        
                         </form>
