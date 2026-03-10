@@ -66,6 +66,129 @@ export interface DashboardDatabase {
         };
         Relationships: [];
       };
+      pomodoros: {
+        Row: {
+          id: string;
+          user_id: string;
+          name: string;
+          focus_minutes: number;
+          short_break_minutes: number;
+          long_break_minutes: number;
+          cycles_until_long_break: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          name: string;
+          focus_minutes: number;
+          short_break_minutes: number;
+          long_break_minutes: number;
+          cycles_until_long_break: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          name?: string;
+          focus_minutes?: number;
+          short_break_minutes?: number;
+          long_break_minutes?: number;
+          cycles_until_long_break?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      pomodoro_sessions: {
+        Row: {
+          id: string;
+          pomodoro_id: string;
+          user_id: string;
+          phase_type: 'focus' | 'short_break' | 'long_break';
+          started_at: string;
+          completed_at: string;
+          duration_seconds: number;
+          cycle_index: number;
+          status: 'completed';
+        };
+        Insert: {
+          id?: string;
+          pomodoro_id: string;
+          user_id: string;
+          phase_type: 'focus' | 'short_break' | 'long_break';
+          started_at: string;
+          completed_at: string;
+          duration_seconds: number;
+          cycle_index: number;
+          status: 'completed';
+        };
+        Update: {
+          id?: string;
+          pomodoro_id?: string;
+          user_id?: string;
+          phase_type?: 'focus' | 'short_break' | 'long_break';
+          started_at?: string;
+          completed_at?: string;
+          duration_seconds?: number;
+          cycle_index?: number;
+          status?: 'completed';
+        };
+        Relationships: [];
+      };
+      pomodoro_runs: {
+        Row: {
+          id: string;
+          pomodoro_id: string;
+          user_id: string;
+          status: 'active' | 'paused' | 'completed' | 'incomplete';
+          current_phase: 'focus' | 'short_break' | 'long_break';
+          remaining_seconds: number;
+          completed_focus_sessions: number;
+          current_cycle: number;
+          started_at: string;
+          paused_at: string | null;
+          completed_at: string | null;
+          last_synced_at: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          pomodoro_id: string;
+          user_id: string;
+          status: 'active' | 'paused' | 'completed' | 'incomplete';
+          current_phase: 'focus' | 'short_break' | 'long_break';
+          remaining_seconds: number;
+          completed_focus_sessions?: number;
+          current_cycle?: number;
+          started_at: string;
+          paused_at?: string | null;
+          completed_at?: string | null;
+          last_synced_at?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          pomodoro_id?: string;
+          user_id?: string;
+          status?: 'active' | 'paused' | 'completed' | 'incomplete';
+          current_phase?: 'focus' | 'short_break' | 'long_break';
+          remaining_seconds?: number;
+          completed_focus_sessions?: number;
+          current_cycle?: number;
+          started_at?: string;
+          paused_at?: string | null;
+          completed_at?: string | null;
+          last_synced_at?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

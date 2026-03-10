@@ -1,13 +1,17 @@
 import style from './style.module.scss'
 import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { BsTools } from 'react-icons/bs';
 import { BiHomeAlt } from 'react-icons/bi';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiTechnoHeart } from 'react-icons/gi';
 import { RiDashboardLine } from 'react-icons/ri';
-import { useEffect, type ComponentType } from 'react';
+import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { useRouter } from 'next/router';
+import type { User } from '@supabase/supabase-js';
 
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { getUserAvatarUrl, getUserDisplayName } from '../../lib/user';
+import { getSupabaseBrowserClient } from '../../lib/supabaseBrowser';
 
 interface buttonProps{
     setIsToggled: (arg: boolean) => void;
@@ -42,6 +46,13 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
       isActive: isHomePage && activeSection === id,
     })),
     {
+      id: 'tools',
+      label: 'Tools',
+      icon: BsTools,
+      href: '/tools',
+      isActive: router.pathname === '/tools',
+    },
+    {
       id: 'dashboard',
       label: 'Dashboard',
       icon: RiDashboardLine,
@@ -51,6 +62,60 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
    ];
 
    const isToggled =  button;
+
+   const [authUser, setAuthUser] = useState<User | null>(null);
+   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+   const [isSigningOut, setIsSigningOut] = useState(false);
+   const userMenuRef = useRef<HTMLDivElement | null>(null);
+
+   useEffect(() => {
+    let isMounted = true;
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const {
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event, session) => {
+        if (!isMounted) return;
+        setAuthUser(session?.user ?? null);
+      });
+
+      void supabase.auth.getSession().then(({ data }) => {
+        if (!isMounted) return;
+        setAuthUser(data.session?.user ?? null);
+      });
+
+      return () => {
+        isMounted = false;
+        subscription.unsubscribe();
+      };
+    } catch {
+      // Supabase not configured
+    }
+   }, []);
+
+   useEffect(() => {
+    if (!isUserMenuOpen) return;
+
+    function handleClickOutside(event: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+   }, [isUserMenuOpen]);
+
+   async function handleSignOut() {
+    setIsSigningOut(true);
+    try {
+      await getSupabaseBrowserClient().auth.signOut();
+      closeMenu();
+    } finally {
+      setIsSigningOut(false);
+    }
+   }
 
    useEffect(() => {
     if (!isToggled) {
@@ -108,6 +173,51 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
                             </a>
                         </li>
                     ))}
+                    {authUser && (
+                        <li key="profile">
+                            <div className={style.userMenuWrapper} ref={userMenuRef}>
+                                <button
+                                    type="button"
+                                    className={style.userAvatarButton}
+                                    onClick={() => setIsUserMenuOpen((prev) => !prev)}
+                                    aria-expanded={isUserMenuOpen}
+                                    aria-haspopup="true"
+                                    aria-label="Open user menu"
+                                >
+                                    {getUserAvatarUrl(authUser) ? (
+                                        <img
+                                            src={getUserAvatarUrl(authUser)!}
+                                            alt=""
+                                            className={style.userAvatar}
+                                            width={40}
+                                            height={40}
+                                        />
+                                    ) : (
+                                        <span className={style.userAvatarFallback}>
+                                            {getUserDisplayName(authUser).slice(0, 2).toUpperCase()}
+                                        </span>
+                                    )}
+                                </button>
+                                {isUserMenuOpen && (
+                                    <div className={style.userMenuDropdown}>
+                                        <p className={style.userMenuName}>{getUserDisplayName(authUser)}</p>
+                                        <p className={style.userMenuEmail}>{authUser.email ?? ''}</p>
+                                        <button
+                                            type="button"
+                                            className={style.userMenuSignOut}
+                                            onClick={() => {
+                                                setIsUserMenuOpen(false);
+                                                void handleSignOut();
+                                            }}
+                                            disabled={isSigningOut}
+                                        >
+                                            {isSigningOut ? 'Signing out...' : 'Sign out'}
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </li>
+                    )}
                 </ul>
             </div>                        
         </nav>
