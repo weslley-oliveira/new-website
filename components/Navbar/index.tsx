@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import type { User } from '@supabase/supabase-js';
 
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { useLocale } from '../../contexts/LocaleContext';
 import { getUserAvatarUrl, getUserDisplayName } from '../../lib/user';
 import { getSupabaseBrowserClient } from '../../lib/supabaseBrowser';
 
@@ -28,13 +29,14 @@ interface NavigationItem {
 
 export function Navbar({ button, setIsToggled }: buttonProps) {
    const router = useRouter();
+   const { t } = useLocale();
    const isHomePage = router.pathname === '/';
    const titleHref = isHomePage ? '#home' : '/';
    const sectionItems = [
-    { id: 'home', label: 'Home', icon: BiHomeAlt },
-    { id: 'about', label: 'Who Am I', icon: BsFillPersonLinesFill },
-    { id: 'projects', label: 'Projects', icon: FaLaptopCode },
-    { id: 'technologies', label: 'Technologies', icon: GiTechnoHeart },
+    { id: 'home', label: t('nav.home'), icon: BiHomeAlt },
+    { id: 'about', label: t('nav.whoAmI'), icon: BsFillPersonLinesFill },
+    { id: 'projects', label: t('nav.projects'), icon: FaLaptopCode },
+    { id: 'technologies', label: t('nav.technologies'), icon: GiTechnoHeart },
    ];
    const activeSection = useActiveSection(sectionItems.map(({ id }) => id));
    const navigationItems: NavigationItem[] = [
@@ -47,14 +49,14 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
     })),
     {
       id: 'tools',
-      label: 'Tools',
+      label: t('nav.tools'),
       icon: BsTools,
       href: '/tools',
       isActive: router.pathname === '/tools',
     },
     {
       id: 'dashboard',
-      label: 'Dashboard',
+      label: t('nav.dashboard'),
       icon: RiDashboardLine,
       href: '/dashboard',
       isActive: router.pathname === '/dashboard',
@@ -211,7 +213,7 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
                                             }}
                                             disabled={isSigningOut}
                                         >
-                                            {isSigningOut ? 'Signing out...' : 'Sign out'}
+                                            {isSigningOut ? t('nav.signingOut') : t('nav.signOut')}
                                         </button>
                                     </div>
                                 )}
@@ -247,7 +249,7 @@ export function Navbar({ button, setIsToggled }: buttonProps) {
                             }}
                             disabled={isSigningOut}
                         >
-                            {isSigningOut ? 'Signing out...' : 'Sign out'}
+                            {isSigningOut ? t('nav.signingOut') : t('nav.signOut')}
                         </button>
                     </div>
                 )}

@@ -1,6 +1,8 @@
+import { useLocale } from '../../contexts/LocaleContext'
 import styles from './style.module.scss'
 
 export function Footer(){
+    const { t } = useLocale();
     return(
         <footer className={styles.footer}>
         <a
@@ -8,7 +10,7 @@ export function Footer(){
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by
+          {t('footer.poweredBy')}
           <span className={styles.logo}>  Weslley Oliveira</span>
         </a>
       </footer>

@@ -3,87 +3,69 @@ import { RiReactjsFill, RiHtml5Fill } from 'react-icons/ri'
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiStyledcomponents } from 'react-icons/si'
 import {  BsGithub , BsArrowRight} from 'react-icons/bs';
 import { FaSass} from 'react-icons/fa'
+import { useLocale } from '../contexts/LocaleContext'
 import styles from '../styles/Projects.module.scss'
 
+interface ProjectCard {
+  title: string;
+  description: string;
+}
+
+const projectImages = [
+  '/letmeask.png',
+  '/moveit.png',
+  '/memory.png',
+  '/evolucaointerior.png',
+];
+
+const projectTech = [
+  [RiReactjsFill, SiTypescript, FaSass, RiHtml5Fill],
+  [SiNextdotjs, RiReactjsFill, SiTypescript, FaSass],
+  [RiReactjsFill, SiStyledcomponents, RiHtml5Fill],
+  [SiNextdotjs, RiReactjsFill, SiTailwindcss, RiHtml5Fill],
+];
+
+const defaultCards: ProjectCard[] = [
+  { title: 'Let Me Ask', description: 'Letmeask helps you answer questions more efficiently, you can select easily who you will answer first.' },
+  { title: 'Move.it', description: 'Move.it is an app to keep you in focus and help to remind you to exercise while you are resting after coding.' },
+  { title: 'Memory Matching Game', description: 'Memory Match Game developed by me from scratch, using Figma for layout and front end technologies' },
+  { title: 'First Client', description: 'I made a single page aplication for my first client she was very satisfied with my work' },
+];
 
 const Projects: NextPage = () => {
+  const { t, get } = useLocale();
+  const cards = get<ProjectCard[]>('projects.cards') ?? defaultCards;
   return (
     <div className={styles.container} id="projects">
       <main className={styles.main}>
         
         <h1 className={styles.title}>
-          Projects
+          {t('projects.title')}
         </h1>
 
         <p className={styles.description}>
-         Some projects from my Github <BsGithub/> 
+         {t('projects.description')} <BsGithub/> 
         </p>
 
         <div className={styles.grid}>
-          <div className={styles.card}>
-            <img src="/letmeask.png" alt="Let Me Ask"/>            
-            <div>
-              <h2>Let Me Ask</h2>              
-              <h3>Letmeask helps you answer questions more efficiently, you can select easily who you will answer first.</h3>              
+          {cards.map((card, index) => (
+            <div key={card.title} className={styles.card}>
+              <img src={projectImages[index]} alt={card.title}/>            
               <div>
-                <RiReactjsFill/>
-                <SiTypescript/>
-                <FaSass/>
-                <RiHtml5Fill/>
+                <h2>{card.title}</h2>              
+                <h3>{card.description}</h3>              
+                <div>
+                  {projectTech[index]?.map((Icon, i) => (
+                    <Icon key={i} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className={styles.card}>
-            <img src="/moveit.png" alt="Move it"/>            
-            <div>
-              <h2>Move.it</h2>              
-              <h3>Move.it is an app to keep you in focus and help to remind you 
-                to exercise while you are resting after coding.
-              </h3>              
-              <div>
-                <SiNextdotjs/>
-                <RiReactjsFill/>
-                <SiTypescript/>
-                <FaSass/>                
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <img src="/memory.png" alt="Weslley Oliveira"/>            
-            <div>
-              <h2>Memory Matching Game</h2>              
-              <h3>
-                Memory Match Game developed by me from scratch, using Figma 
-                for layout and front end technologies
-              </h3>              
-              <div>
-                <RiReactjsFill/>
-                <SiStyledcomponents/>                
-                <RiHtml5Fill/>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <img src="/evolucaointerior.png" alt="Evolucao interior"/>            
-            <div>
-              <h2>First Client</h2>              
-              <h3>I made a single page aplication for my first client she was very satisfied with my work</h3>              
-              <div>
-                <SiNextdotjs/>
-                <RiReactjsFill/>
-                <SiTailwindcss/>                
-                <RiHtml5Fill/>
-              </div>
-            </div>
-          </div>
-
+          ))}
         </div>
 
         <a href="https://github.com/weslley-oliveira" className={styles.description}>
-         See more <BsGithub/> <BsArrowRight/>
+         {t('projects.seeMore')} <BsGithub/> <BsArrowRight/>
         </a>
       </main>
 

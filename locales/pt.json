@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "Início",
+    "whoAmI": "Quem Sou Eu",
+    "projects": "Projetos",
+    "technologies": "Tecnologias",
+    "tools": "Ferramentas",
+    "dashboard": "Dashboard",
+    "signOut": "Sair",
+    "signingOut": "Saindo..."
+  },
+  "home": {
+    "title": "Olá, sou um resolvedor de problemas.",
+    "subtitle": "Desenvolvedor Front End, ReactJs, Typescript e Nextjs.",
+    "downloadCv": "Baixar CV",
+    "contactMe": "Entre em Contato",
+    "metaDescription": "Olá, sou um resolvedor de problemas. Desenvolvedor Front End, ReactJs, Typescript e Nextjs."
+  },
+  "about": {
+    "eyebrow": "Sobre mim",
+    "title": "Quem Sou Eu",
+    "lead": "Meu nome é Weslley Oliveira, sou apaixonado por interação humano-máquina, e criar essas experiências é tanto meu trabalho quanto meu hobby.",
+    "findMeOnline": "Me encontre online",
+    "keepInTouch": "Vamos manter contato.",
+    "socialIntro": "Compartilho meu trabalho, jornada e inspiração do dia a dia nessas plataformas.",
+    "storyCards": [
+      {
+        "eyebrow": "Origens",
+        "title": "Da eletrônica ao software",
+        "paragraphs": [
+          "Comecei minha carreira consertando equipamentos eletrônicos na Universidade Metodista de São Paulo, depois fui promovido ao departamento de tecnologia da informação, onde trabalhei em suporte técnico enquanto concluía meu Bacharelado em Engenharia da Computação em 2013.",
+          "Me despedi daquela universidade com muito carinho e parti para uma aventura pelo Brasil, trabalhando com automação industrial e programando balanças inteligentes para pesagem de soja em todo o país."
+        ]
+      },
+      {
+        "eyebrow": "Transição",
+        "title": "Inglaterra, idioma e resiliência",
+        "paragraphs": [
+          "Impulsionado por um espírito aventureiro, me mudei para a Inglaterra e, no processo de aprender inglês, arrisquei nos mais variados trabalhos: ajudante de cozinha, entregador e montador de móveis.",
+          "Essa jornada acabou me levando de volta à tecnologia, desta vez como Desenvolvedor Front End remoto, trabalhando principalmente com React e JavaScript."
+        ]
+      },
+      {
+        "eyebrow": "Propósito",
+        "title": "Viagem, criatividade e impacto",
+        "paragraphs": [
+          "Viajar se tornou minha paixão, e uma grande parte do porquê amo o que faço é porque minha carreira me deu exatamente isso. Conhecer outras culturas e lugares me dá uma forma melhor de pensar e me torna mais criativo.",
+          "Meu sonho é desenvolver uma aplicação que impacte muitas pessoas. Acredito que, com a inclusão digital em ascensão e através do meu código, poderei transformar muitas vidas."
+        ]
+      },
+      {
+        "eyebrow": "Mindset",
+        "title": "Disciplina por trás do trabalho",
+        "paragraphs": [
+          "Por isso pratico programação todos os dias, estudo desenvolvimento de software e me mantenho atualizado. Tenho certeza de que isso me levará lá.",
+          "Em um mundo onde a atenção se tornou um campo de batalha, aprendi que o foco é um músculo. Através do desenvolvimento pessoal e da meditação, construí uma rotina disciplinada que reflete diretamente na qualidade do meu trabalho."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Alguns projetos do meu Github",
+    "seeMore": "Ver mais",
+    "cards": [
+      {
+        "title": "Let Me Ask",
+        "description": "Letmeask ajuda você a responder perguntas com mais eficiência, você pode selecionar facilmente quem responder primeiro."
+      },
+      {
+        "title": "Move.it",
+        "description": "Move.it é um app para manter você focado e lembrar você de se exercitar durante o descanso após programar."
+      },
+      {
+        "title": "Memory Matching Game",
+        "description": "Jogo de Memória desenvolvido por mim do zero, usando Figma para layout e tecnologias front end."
+      },
+      {
+        "title": "Primeiro Cliente",
+        "description": "Fiz uma aplicação de página única para minha primeira cliente, ela ficou muito satisfeita com meu trabalho."
+      }
+    ]
+  },
+  "contact": {
+    "placeholderNameStart": "digite seu nome para começar",
+    "placeholderName": "digite seu nome",
+    "placeholderEmail": "digite seu melhor email",
+    "placeholderMessage": "digite sua mensagem",
+    "confirmPrompt": "quer enviar? pressione Y ou N",
+    "sending": "enviando sua mensagem...",
+    "sendingShort": "enviando...",
+    "yes": "sim",
+    "not": "não",
+    "or": "ou",
+    "doYouWantToSend": "quer enviar?",
+    "errorName": "Por favor, digite seu nome.",
+    "errorEmail": "Por favor, digite um email válido.",
+    "errorMessageShort": "Sua mensagem está muito curta.",
+    "errorMessageLeave": "Por favor, deixe sua mensagem.",
+    "errorPressYN": "Por favor, pressione Y ou N.",
+    "success": "Sua mensagem foi enviada com sucesso.",
+    "errorSend": "Não foi possível enviar sua mensagem. Tente novamente.",
+    "easterEgg1": "Esse botão não faz nada! haha",
+    "easterEgg2": "Desculpa, eu também! haha"
+  },
+  "footer": {
+    "poweredBy": "Desenvolvido por"
+  }
+}

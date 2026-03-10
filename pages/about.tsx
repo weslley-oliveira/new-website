@@ -2,9 +2,16 @@ import type { NextPage } from 'next';
 import { BsGithub, BsInstagram, BsLinkedin } from 'react-icons/bs';
 
 import { Reveal } from '../components/Reveal';
+import { useLocale } from '../contexts/LocaleContext';
 import styles from '../styles/About.module.scss';
 
-const storyCards = [
+interface StoryCard {
+  eyebrow: string;
+  title: string;
+  paragraphs: string[];
+}
+
+const defaultStoryCards: StoryCard[] = [
   {
     eyebrow: 'Origins',
     title: 'From electronics to software',
@@ -61,20 +68,20 @@ const socialLinks = [
 ];
 
 const About: NextPage = () => {
+  const { t, get } = useLocale();
+  const storyCards = (get<StoryCard[]>('about.storyCards') ?? defaultStoryCards);
   return (
     <>
       <div className={styles.container} id="about">
         <main className={styles.main}>
           <Reveal animateIn="animate__fadeInUp">
             <section className={styles.hero}>
-              <p className={styles.eyebrow}>About me</p>
+              <p className={styles.eyebrow}>{t('about.eyebrow')}</p>
               <h1 className={styles.title}>
-                Who Am I <span>?</span>
+                {t('about.title')} <span>?</span>
               </h1>
               <p className={styles.lead}>
-                My name is Weslley Oliveira, I&apos;m passionate about
-                human-machine interaction, and creating these experiences is both
-                my work and my hobby.
+                {t('about.lead')}
               </p>
             </section>
           </Reveal>
@@ -102,11 +109,10 @@ const About: NextPage = () => {
           <Reveal animateIn="animate__fadeInUp" delay={220}>
             <section className={styles.socialPanel} aria-label="Social links">
               <div className={styles.socialIntro}>
-                <p className={styles.cardEyebrow}>Find me online</p>
-                <h2>Let&apos;s keep in touch.</h2>
+                <p className={styles.cardEyebrow}>{t('about.findMeOnline')}</p>
+                <h2>{t('about.keepInTouch')}</h2>
                 <p>
-                  I share my work, journey, and day-to-day inspiration across
-                  these platforms.
+                  {t('about.socialIntro')}
                 </p>
               </div>
 

@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "Home",
+    "whoAmI": "Who Am I",
+    "projects": "Projects",
+    "technologies": "Technologies",
+    "tools": "Tools",
+    "dashboard": "Dashboard",
+    "signOut": "Sign out",
+    "signingOut": "Signing out..."
+  },
+  "home": {
+    "title": "Hi, I am a problem solver.",
+    "subtitle": "Front End Web Developer, ReactJs, Typescript and Nextjs.",
+    "downloadCv": "Download CV",
+    "contactMe": "Contact Me",
+    "metaDescription": "Hi, I am a problem solver. Front End Web Developer, ReactJs, Typescript and Nextjs."
+  },
+  "about": {
+    "eyebrow": "About me",
+    "title": "Who Am I",
+    "lead": "My name is Weslley Oliveira, I'm passionate about human-machine interaction, and creating these experiences is both my work and my hobby.",
+    "findMeOnline": "Find me online",
+    "keepInTouch": "Let's keep in touch.",
+    "socialIntro": "I share my work, journey, and day-to-day inspiration across these platforms.",
+    "storyCards": [
+      {
+        "eyebrow": "Origins",
+        "title": "From electronics to software",
+        "paragraphs": [
+          "I started my career repairing electronic equipment at the Methodist University of São Paulo, then I was promoted to the information technology department, where I worked in technical support whilst completing my Bachelor's degree in Computer Engineering in 2013.",
+          "I said goodbye to that university with great fondness and set off on an adventure across Brazil, working with industrial automation and programming smart scales for weighing soya beans throughout the country."
+        ]
+      },
+      {
+        "eyebrow": "Transition",
+        "title": "England, language, and resilience",
+        "paragraphs": [
+          "Driven by an adventurous spirit, I moved to England and, in the process of learning English, I took a chance on the most varied jobs: kitchen porter, courier, and furniture fitter.",
+          "That journey eventually led me back to technology, this time as a remote Front End Developer, working mainly with React and JavaScript."
+        ]
+      },
+      {
+        "eyebrow": "Purpose",
+        "title": "Travel, creativity, and impact",
+        "paragraphs": [
+          "Travelling has become my passion, and a big part of why I love what I do is because my career has given me exactly that. Getting to know other cultures and places gives me a better way of thinking and makes me more creative.",
+          "My dream is to develop an application that impacts many people. I believe that, with digital inclusion on the rise and through my code, I will be able to transform many lives."
+        ]
+      },
+      {
+        "eyebrow": "Mindset",
+        "title": "Discipline behind the work",
+        "paragraphs": [
+          "That's why I practise programming every day, study software development, and keep myself up to date. I'm certain this will lead me there.",
+          "In a world where attention has become a battleground, I've learned that focus is a muscle. Through personal development and meditation, I've built a disciplined routine that directly reflects on the quality of my work."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Some projects from my Github",
+    "seeMore": "See more",
+    "cards": [
+      {
+        "title": "Let Me Ask",
+        "description": "Letmeask helps you answer questions more efficiently, you can select easily who you will answer first."
+      },
+      {
+        "title": "Move.it",
+        "description": "Move.it is an app to keep you in focus and help to remind you to exercise while you are resting after coding."
+      },
+      {
+        "title": "Memory Matching Game",
+        "description": "Memory Match Game developed by me from scratch, using Figma for layout and front end technologies"
+      },
+      {
+        "title": "First Client",
+        "description": "I made a single page aplication for my first client she was very satisfied with my work"
+      }
+    ]
+  },
+  "contact": {
+    "placeholderNameStart": "type your name to start",
+    "placeholderName": "type your name",
+    "placeholderEmail": "type your best email",
+    "placeholderMessage": "type your message",
+    "confirmPrompt": "do you want to send it? press Y or N",
+    "sending": "sending your message...",
+    "sendingShort": "sending...",
+    "yes": "yes",
+    "not": "not",
+    "or": "or",
+    "doYouWantToSend": "do you want to send it?",
+    "errorName": "Please tell me your name.",
+    "errorEmail": "Please enter a valid email address.",
+    "errorMessageShort": "Your message is too short.",
+    "errorMessageLeave": "Please leave your message.",
+    "errorPressYN": "Please press Y or N.",
+    "success": "Your message has been sent successfully.",
+    "errorSend": "Could not send your message. Please try again.",
+    "easterEgg1": "This button does nothing! haha",
+    "easterEgg2": "Sorry me too! haha"
+  },
+  "footer": {
+    "poweredBy": "Powered by"
+  }
+}

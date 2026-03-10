@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm';
+import { useLocale } from '../../contexts/LocaleContext';
 import {
     useEffect,
     useRef,
@@ -27,6 +28,7 @@ interface contactProps {
 }
 
 export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
+    const { t } = useLocale();
     const DraggableContainer = Draggable as unknown as ComponentType<{
         children: ReactNode;
         nodeRef?: RefObject<HTMLElement>;
@@ -40,7 +42,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
 
     const [count, setCount] = useState(0);
 
-    const notifySuccess = () => toast.success('Your message has been sent successfully.', {
+    const notifySuccess = () => toast.success(t('contact.success'), {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -88,7 +90,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
     function handleEasterEgg() {
 
         if(count === 0){
-            toast.success('This button does nothing! haha', {
+            toast.success(t('contact.easterEgg1'), {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -99,7 +101,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                 });
             setCount(count + 1)
         }else{
-            toast.warning('Sorry me too! haha', {
+            toast.warning(t('contact.easterEgg2'), {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -136,7 +138,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                 }
                 setEmail("visible")
                 }else {
-                    setError("Please tell me your name.")
+                    setError(t('contact.errorName'))
                 }            
 
             } else if (index <= 1) {
@@ -148,7 +150,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                     }
                     setMessage("visible")
                 } else {
-                    setError('Please enter a valid email address.')
+                    setError(t('contact.errorEmail'))
                 }
 
             } else if (index <= 2) {
@@ -161,13 +163,13 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                     setShow("message")
                     setMessage("men")
                 } else {
-                    setError("Your message is too short.")
+                    setError(t('contact.errorMessageShort'))
                 }
 
 
             } else {
 
-                setError("Please leave your message.")
+                setError(t('contact.errorMessageLeave'))
             }
         }
     }
@@ -187,7 +189,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
             const message =
                 err instanceof Error
                     ? err.message
-                    : 'Could not send your message. Please try again.';
+                    : t('contact.errorSend');
 
             setError(message)
             notifyError(message)
@@ -211,7 +213,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
             } else if (event.key.toLowerCase() === "n") {
                 closeModal()
             } else {
-                setError("Please press Y or N.")
+                setError(t('contact.errorPressYN'))
             }
         }
 
@@ -223,13 +225,13 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                     if(values.message.length >=10 ){
                         await submitContactMessage()
                     } else {
-                        setError("Your message is too short.")                   
+                        setError(t('contact.errorMessageShort'))                   
                     }
                 } else {
-                    setError('Please enter a valid email address.')
+                    setError(t('contact.errorEmail'))
                 }                
             } else {
-                setError("Please tell me your name.")
+                setError(t('contact.errorName'))
             }
             
         }
@@ -251,7 +253,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
         const responseData = await response.json().catch(() => null)
 
         if (!response.ok) {
-            throw new Error(responseData?.message ?? 'Could not send your message. Please try again.')
+            throw new Error(responseData?.message ?? t('contact.errorSend'))
         }
     }
    
@@ -306,7 +308,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                     autoFocus
                                     name="name"
                                     type="text"
-                                    placeholder="type your name to start"
+                                    placeholder={t('contact.placeholderNameStart')}
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}
                                     required
@@ -320,7 +322,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                     name="email"
                                     type="email"
                                     className={`${email === 'hidden' && styles.hidden}`}
-                                    placeholder="type your best email"
+                                    placeholder={t('contact.placeholderEmail')}
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}
                                     required
@@ -336,7 +338,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                     name="message"
                                     type="text"
                                     className={`${message === 'hidden' && styles.hidden}`}
-                                    placeholder="type your message"
+                                    placeholder={t('contact.placeholderMessage')}
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}
                                     required
@@ -364,7 +366,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                     className={`${show !== 'message' && styles.hidden}`}
                                     placeholder=""
                                     readOnly
-                                    value={isSubmitting ? "sending your message..." : "do you want to send it? press Y or N"}
+                                    value={isSubmitting ? t('contact.sending') : t('contact.confirmPrompt')}
                                     onKeyPress={sendMessage}
                                     required
                                 />
@@ -401,7 +403,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                     autoFocus
                                     name="name"
                                     type="text"
-                                    placeholder="type your name"
+                                    placeholder={t('contact.placeholderName')}
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}                                    
                                 />
@@ -413,7 +415,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                 <input
                                     name="email"
                                     type="email"                                    
-                                    placeholder="type your best email"
+                                    placeholder={t('contact.placeholderEmail')}
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}                                   
                                 />
@@ -425,7 +427,7 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                                 <input
                                     name="message"
                                     type="text"                                    
-                                    placeholder="type your message"
+                                    placeholder={t('contact.placeholderMessage')}
                                     onChange={onChange}
                                     onKeyPress={handleNextLine}                                    
                                 />
@@ -443,15 +445,15 @@ export function Contact({ modalIsOpen, setIsOpen, display }: contactProps) {
                             {/* Send Message */}
                             <br/>
                             <div>
-                                <span>{">"}do you want to send it?</span>                               
+                                <span>{">"}{t('contact.doYouWantToSend')}</span>                               
                             </div>
                             <br/>
                             <div className={styles.buttons}>
                                 <button type="button" onClick={sendMessage} disabled={isSubmitting}>
-                                    {isSubmitting ? 'sending...' : 'yes'}
+                                    {isSubmitting ? t('contact.sendingShort') : t('contact.yes')}
                                 </button>
-                                <span>or</span>
-                                <button type="button" onClick={closeModal} disabled={isSubmitting}>not</button>
+                                <span>{t('contact.or')}</span>
+                                <button type="button" onClick={closeModal} disabled={isSubmitting}>{t('contact.not')}</button>
                             </div>
                             <span>{error}</span>                                                        
                         </form>

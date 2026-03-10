@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Navbar } from '../Navbar'
+import { LanguageSwitcher } from '../LanguageSwitcher'
 import styles from './style.module.scss'
 
 export function Header() {
@@ -25,26 +26,38 @@ export function Header() {
     const titleHref = router.pathname === '/' ? '#home' : '/'
 
     return (
-        
-        <header className={`${styles.header} ${scrollPosition >= 1 ? styles.scrolled : ''}`}>
-            <div className={styles.title}>
-                <a href={titleHref} className={styles.titleLink}>
-                    <h2> {"<"}{Title}<span>{"/>"}</span> </h2>
+        <div className={`${styles.headerWrapper} ${scrollPosition >= 1 ? styles.scrolled : ''}`}>
+            <div className={styles.langBar}>
+                <a href={titleHref} className={styles.langBarLogo}>
+                    <h2>{"<"}{Title}<span>{"/>"}</span></h2>
                 </a>
+                <LanguageSwitcher />
             </div>
-            <button
-                type="button"
-                aria-label={isToggled ? 'Close navigation menu' : 'Open navigation menu'}
-                aria-expanded={isToggled}
-                aria-controls="primary-navigation"
-                onClick={()=>setIsToggled(!isToggled)} 
-                className={`${styles.menuBars} ${scrollPosition >=1 && styles.fixed}  ${isToggled?styles.active:''}`}>
-                    
-                <div className={styles.line1}></div>
-                <div className={styles.line2}></div>
-                <div className={styles.line3}></div>
-            </button>   
-            <Navbar button={isToggled} setIsToggled={setIsToggled}/>        
-        </header>
+            <header className={styles.header}>
+                <div className={styles.title}>
+                    <a href={titleHref} className={styles.titleLink}>
+                        <h2> {"<"}{Title}<span>{"/>"}</span> </h2>
+                    </a>
+                </div>
+                <Navbar button={isToggled} setIsToggled={setIsToggled}/>
+                <div className={styles.rightActions}>
+                    <div className={styles.mobileSwitcher}>
+                        <LanguageSwitcher />
+                    </div>
+                    <button
+                    type="button"
+                    aria-label={isToggled ? 'Close navigation menu' : 'Open navigation menu'}
+                    aria-expanded={isToggled}
+                    aria-controls="primary-navigation"
+                    onClick={()=>setIsToggled(!isToggled)} 
+                    className={`${styles.menuBars} ${scrollPosition >=1 && styles.fixed}  ${isToggled?styles.active:''}`}>
+                        
+                    <div className={styles.line1}></div>
+                    <div className={styles.line2}></div>
+                    <div className={styles.line3}></div>
+                </button>
+                </div>
+            </header>
+        </div>
     )
 }

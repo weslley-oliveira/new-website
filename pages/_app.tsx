@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import "animate.css/animate.min.css";
+import { LocaleProvider } from '../contexts/LocaleContext';
 
 const VISITOR_STORAGE_KEY = 'portfolio-visitor-id';
 const SESSION_VISIT_PREFIX = 'portfolio-visit';
@@ -81,7 +82,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.asPath, router.isReady]);
 
   return (
-     <Component {...pageProps} />
+    <LocaleProvider>
+      <Component {...pageProps} />
+    </LocaleProvider>
   )
 }
 
