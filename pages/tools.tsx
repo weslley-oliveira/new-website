@@ -354,9 +354,12 @@ const ToolsPage: NextPage = () => {
 
   useEffect(() => {
     let isMounted = true;
+    console.log('[Tools] Auth useEffect running');
 
     try {
+      console.log('[Tools] getSupabaseBrowserClient()...');
       const supabase = getSupabaseBrowserClient();
+      console.log('[Tools] Supabase client OK, setting up auth listener');
       const {
         data: { subscription },
       } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -375,9 +378,11 @@ const ToolsPage: NextPage = () => {
           }
 
           if (error) {
+            console.error('[Tools] getSession error:', error);
             throw error;
           }
 
+          console.log('[Tools] getSession done, user:', data.session?.user?.id ?? 'none');
           setAuthUser(data.session?.user ?? null);
         })
         .catch((error: unknown) => {
@@ -385,10 +390,12 @@ const ToolsPage: NextPage = () => {
             return;
           }
 
+          console.error('[Tools] getSession catch:', error);
           setPageError(getErrorMessage(error, 'Could not restore your Supabase session.'));
         })
         .finally(() => {
           if (isMounted) {
+            console.log('[Tools] Auth loading complete, setIsAuthLoading(false)');
             setIsAuthLoading(false);
           }
         });
@@ -398,6 +405,7 @@ const ToolsPage: NextPage = () => {
         subscription.unsubscribe();
       };
     } catch (error) {
+      console.error('[Tools] Auth useEffect catch:', error);
       setPageError(getErrorMessage(error, 'Supabase auth is not configured for the browser.'));
       setIsAuthLoading(false);
     }
@@ -1171,12 +1179,16 @@ const ToolsPage: NextPage = () => {
   }
 
   async function handleSignIn() {
+    console.log('[Tools] handleSignIn called');
     setPageError(null);
     setIsSigningIn(true);
 
     try {
+      console.log('[Tools] Getting Supabase client...');
+      const supabase = getSupabaseBrowserClient();
       const redirectTo = `${window.location.origin}/tools`;
-      const { error } = await getSupabaseBrowserClient().auth.signInWithOAuth({
+      console.log('[Tools] Calling signInWithOAuth, redirectTo:', redirectTo);
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo,
@@ -1184,9 +1196,12 @@ const ToolsPage: NextPage = () => {
       });
 
       if (error) {
+        console.error('[Tools] signInWithOAuth error:', error);
         throw error;
       }
+      console.log('[Tools] signInWithOAuth success, data:', data);
     } catch (error) {
+      console.error('[Tools] handleSignIn catch:', error);
       setPageError(getErrorMessage(error, 'Could not start Google sign-in.'));
       setIsSigningIn(false);
     }
@@ -1503,7 +1518,10 @@ const ToolsPage: NextPage = () => {
                             <button
                               className={styles.authButton}
                               type="button"
-                              onClick={() => void handleSignIn()}
+                              onClick={() => {
+                                console.log('[Tools] Sign in button clicked');
+                                void handleSignIn();
+                              }}
                               disabled={isSigningIn || isAuthLoading}
                             >
                               {isSigningIn ? 'Opening Google...' : 'Sign in with Google'}
